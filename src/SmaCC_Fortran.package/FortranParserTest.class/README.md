@@ -1,0 +1,1 @@
+An ANTLR2SmaccTest is a test class for testing the behavior of ANTLR2Smacc
