@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Fortran_OFP",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"filename",
+		"entities",
+		"counter"
+	],
+	"name" : "FortranIRReader",
+	"type" : "normal"
+}
