@@ -1,15 +1,18 @@
 {
-	"commentStamp" : "NicolasAnquetil 12/4/2018 16:53",
+	"commentStamp" : "NicolasAnquetil 12/4/2018 22:05",
 	"super" : "Object",
 	"category" : "Fortran_OFP",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"filename",
-		"entities",
-		"counter"
+		"kind",
+		"key",
+		"parent",
+		"data",
+		"famix",
+		"irModel"
 	],
-	"name" : "FortranIRReader",
+	"name" : "IREntity",
 	"type" : "normal"
 }
