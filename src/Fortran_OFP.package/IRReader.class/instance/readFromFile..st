@@ -1,4 +1,4 @@
-convertion
+converting
 readFromFile: filename
 	| stream reader |
 	stream := filename asFileReference readStream.
