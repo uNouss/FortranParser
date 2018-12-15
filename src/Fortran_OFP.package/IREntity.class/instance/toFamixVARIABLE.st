@@ -1,7 +1,24 @@
 converting
 toFamixVARIABLE
 	"should test what is the parent to decide what kind of variable we want to create"
-	^FAMIXGlobalVariable new
+	| owner famixOwner class belongsToPredicate |
+	owner := irModel entityAt: parent.
+	owner
+		ifNil: [
+			famixOwner := nil.
+			class := FAMIXGlobalVariable.
+			belongsToPredicate := #parentScope: ]
+		ifNotNil: [
+			famixOwner := owner toFamix.
+			famixOwner isBehaviouralEntity
+				ifTrue: [
+					class := FAMIXLocalVariable.
+					belongsToPredicate := #parentBehaviouralEntity: ]
+				ifFalse: [
+					class := FAMIXGlobalVariable.
+					belongsToPredicate := #parentScope:]].
+	
+	^class new
 		name: self name ;
-		parentScope: (irModel entityAt: parent) toFamix ;
+		perform: belongsToPredicate with: famixOwner ;
 		yourself
