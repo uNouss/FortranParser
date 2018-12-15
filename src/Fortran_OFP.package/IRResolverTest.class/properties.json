@@ -5,7 +5,14 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"mdl1",
+		"mdl2",
+		"fct1",
+		"fct2",
+		"fct3",
+		"mdl3"
+	],
 	"name" : "IRResolverTest",
 	"type" : "normal"
 }
