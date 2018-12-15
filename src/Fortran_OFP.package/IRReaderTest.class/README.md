@@ -1,0 +1,1 @@
+A test class for testing the behavior of IRReader

@@ -1,7 +1,13 @@
-converting
+convertion
 toFamix
 	"definitions of Famix entities"
-	entities values reject: #isAnonymous thenCollect: #toFamix.
+	entities valuesDo: [ :entity |
+		(entity isAnonymous)
+		ifFalse: [ entity toFamix ]
+	].
 
 	"references to Famix entities"
-	entities values select: #isAnonymous thenCollect: #toFamix.
+	entities valuesDo: [ :entity |
+		(entity isAnonymous)
+		ifTrue: [ entity toFamix ]
+	]

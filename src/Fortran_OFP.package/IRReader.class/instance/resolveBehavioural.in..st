@@ -1,5 +1,9 @@
-lookup by name
+as yet unclassified
 resolveBehavioural: name in: famixContext
 	^famixContext functions
 		detect: [ :f | f name = name ]
-		ifNone: [ self resolveBehavioural: name ]
+		ifNone: [ FAMIXFunction new
+						name: name ;
+						isStub: true ;
+						yourself
+		]
