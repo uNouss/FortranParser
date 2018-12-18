@@ -1,6 +1,9 @@
 converting
 toFamixFUNCTION
-	^FAMIXFunction new
-		name: self name ;
-		container: (irModel entityAt: parent) toFamix ;
-		yourself
+	| fct |
+	fct := FAMIXFunction new
+				name: self name ;
+				yourself.
+	
+	(irModel entityAt: parent) toFamix fortranEntities add: fct.
+	^fct

@@ -4,6 +4,6 @@ toFamixMODULE
 	mod := FAMIXModule new
 				name: self name ;
 				yourself.
-	"root module as no parent"
-	parent ifNotNil: [ mod parentScope: (irModel entityAt: parent) toFamix ].
+.
+	parent ifNotNil: [ (irModel entityAt: parent) toFamix fortranEntities add: mod ].
 	^ mod

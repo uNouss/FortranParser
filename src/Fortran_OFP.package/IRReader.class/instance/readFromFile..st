@@ -1,5 +1,5 @@
 convertion
 readFromFile: filename
-	filename asFileReference readStream: [:stream |
+	filename asFileReference readStreamDo: [:stream |
 		self readFromStream: stream
 	]
