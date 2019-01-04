@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "FAMIXFunction",
+	"category" : "Fortran_OFP-Famix",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "FAMIXProgram",
+	"type" : "normal"
+}

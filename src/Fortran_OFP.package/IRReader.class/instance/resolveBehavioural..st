@@ -1,4 +1,4 @@
-as yet unclassified
+convertion
 resolveBehavioural: name
 	"look for an entity named 'name' in famixContext.
 	 If found, returns a list containing it.

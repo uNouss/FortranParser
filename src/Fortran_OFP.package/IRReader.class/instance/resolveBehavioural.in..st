@@ -1,4 +1,4 @@
-as yet unclassified
+convertion
 resolveBehavioural: name in: famixContext
 	^famixContext functions
 		detect: [ :f | f name = name ]
