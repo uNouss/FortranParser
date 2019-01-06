@@ -1,7 +1,7 @@
 private utilities
 makeEntity: assocList key: aString
 	| entity data |
-	entity := IREntity new
+	entity := IREntityOLD new
 						key: aString ;
 						irModel: irModel ;
 						yourself.

@@ -1,3 +1,0 @@
-converting
-toFamixSUBPROGRAM
-	^self toFamixFUNCTION 

@@ -1,0 +1,3 @@
+resolving
+resolveLocalReference: aString
+	^#()

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "IREntityAssociation",
+	"category" : "Fortran_OFP",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "IREntityNAMEREF",
+	"type" : "normal"
+}

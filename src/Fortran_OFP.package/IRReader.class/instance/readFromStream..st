@@ -1,4 +1,4 @@
-convertion
+reading
 readFromStream: stream
 	| reader |
 	reader := NeoJSONReader on: stream.
