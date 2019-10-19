@@ -1,3 +1,0 @@
-accessing
-famixTargetClass
-	self subclassResponsibility 

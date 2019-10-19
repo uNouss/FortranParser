@@ -1,3 +1,0 @@
-resolving
-resolveReference: aString
-	^#()

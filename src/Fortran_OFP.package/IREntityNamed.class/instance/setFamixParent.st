@@ -1,3 +1,0 @@
-converting
-setFamixParent
-	self subclassResponsibility 

@@ -1,1 +1,0 @@
-Error raised when trying to resolve a name and finding several possibilities
