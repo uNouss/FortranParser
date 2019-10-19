@@ -1,3 +1,0 @@
-resolving
-resolveNonLocalReference: aString
-	^#()

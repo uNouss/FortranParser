@@ -1,3 +1,0 @@
-testing
-isNamed: aString
-	^false

@@ -1,3 +1,0 @@
-resolving
-resolveLocalReference: aString
-	self subclassResponsibility 
