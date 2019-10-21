@@ -14,22 +14,23 @@ Class {
 { #category : #initialization }
 IREntityTest >> setUp [
 	super setUp.
-	mdl := (self makeFamix: FAMIXModule entity: #() key: 'keyMdl')
-					name: 'mdl' ;
-					isStub: false ;
-					yourself.
+	self makeEntity: '{"key":"keyMdl","kind":"MODULE","data":{"name":"mdl"}}'.
+	mdl := (irModel entityAtKey: 'keyMdl')
+				toFamix ;
+				yourself.
 
-	fct := (self makeFamix: FAMIXFunction entity: #() key: 'keyFct')
-					name: 'fct' ;
-					isStub: false ;
-					yourself.
+	self makeEntity: '{"key":"keyFct","parent":"mdl","kind":"FUNCTION","data":{"name":"fct"}}'.
+	fct := (irModel entityAtKey: 'keyFct')
+				toFamix ;
+				yourself.
 
 ]
 
 { #category : #'tests-converting' }
 IREntityTest >> testToFamixFUNCTION [
 	|entity |
-	entity := self makeEntity: {'name' -> 'entity2' . 'kind' -> 'FUNCTION' . 'parent' -> 'keyMdl'} key: 'key1'.
+	self makeEntity: '{"key":"key1","parent":"keyMdl","kind":"FUNCTION","data":{"name":"entity2"}}'.
+	entity := irModel entityAtKey: 'key1'.
 
 	self assert: entity toFamix class equals: FamixFortranFunction.
 	self assert: entity toFamix fortranOwner equals: mdl.

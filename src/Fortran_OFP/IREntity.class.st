@@ -9,7 +9,7 @@ Class {
 		'parentKey',
 		'parentIR'
 	],
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP-IRModel'
 }
 
 { #category : #'instance creation' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #IREntityUSEMODULE,
 	#superclass : #IREntityAssociation,
-	#category : #'Fortran_OFP'
+	#category : #'Fortran_OFP-IRModel'
 }
 
 { #category : #accessing }

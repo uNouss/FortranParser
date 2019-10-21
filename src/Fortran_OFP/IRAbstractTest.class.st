@@ -4,36 +4,21 @@ Class {
 	#instVars : [
 		'irModel'
 	],
-	#category : 'Fortran_OFP-Tests'
+	#category : #'Fortran_OFP-Tests'
 }
 
 { #category : #'private utilities' }
-IRAbstractTest >> makeEntity: assocList key: aString [
-	| entity data |
-	entity := IREntityOLD new
-						key: aString ;
-						irModel: irModel ;
-						yourself.
-	assocList do: [ :assoc |
-		[entity perform: (assoc key , ':') asSymbol with: (assoc value)]
-		on: MessageNotUnderstood
-		do: [  "ignore" ]
-	].
-	data := Dictionary new.
-	assocList do: [ :assoc | data add: assoc ].
-	entity data: data.
-	irModel entities at: aString put: entity.
-	^ entity
+IRAbstractTest >> associateFamix: aFamixClass toEntity: aKey [
+	| fmx |
+	fmx := aFamixClass new.
+	(irModel entityAtKey: aKey) famix: fmx.
+	^ fmx
 
 ]
 
 { #category : #'private utilities' }
-IRAbstractTest >> makeFamix: aFamixClass entity: assocList key: aString [
-	| entity fmx |
-	entity := self makeEntity: assocList key: aString.
-	fmx := aFamixClass new.
-	entity famix: fmx.
-	^ fmx
+IRAbstractTest >> makeEntity: entityDescription [
+	irModel readFromStream: (ReadStream on: entityDescription).
 
 ]
 

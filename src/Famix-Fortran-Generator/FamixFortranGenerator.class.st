@@ -58,6 +58,7 @@ FamixFortranGenerator >> defineHierarchy [
 	invocation --|> #TInvocation.
 	invocation --|> #TWithSignature.
 
+	module --|> namedEntity.
 	module --|> #TModule.
 	module --|> #TWithFunctions.
 	module --|> #TWithTypes.
@@ -70,7 +71,7 @@ FamixFortranGenerator >> defineHierarchy [
 	globalVariable --|> #TPossibleStub.
 	globalVariable --|> #TNamespaceEntity.
 
-	function --|> sourcedEntity.
+	function --|> namedEntity.
 	function --|> #TWithAccesses.
 	function --|> #TWithStatements.
 	function --|> #TNamespace.

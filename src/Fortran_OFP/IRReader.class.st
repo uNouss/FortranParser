@@ -18,7 +18,7 @@ Class {
 		'entities',
 		'model'
 	],
-	#category : #'Fortran_OFP'
+	#category : #'Fortran_OFP-IR2Famix'
 }
 
 { #category : #'instance creation' }

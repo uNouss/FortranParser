@@ -1,7 +1,7 @@
 Class {
 	#name : #IREntityMODULE,
 	#superclass : #IREntityNamed,
-	#category : #'Fortran_OFP'
+	#category : #'Fortran_OFP-IRModel'
 }
 
 { #category : #resolving }
