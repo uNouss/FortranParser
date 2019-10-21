@@ -1,7 +1,7 @@
 Class {
 	#name : #IREntityMODULE,
 	#superclass : #IREntityNamed,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #resolving }
@@ -14,7 +14,7 @@ IREntityMODULE class >> resolveLocalName: aString forFamixModule: module [
 
 { #category : #accessing }
 IREntityMODULE >> famixClass [
-	^FAMIXModule
+	^FamixFortranModule
 ]
 
 { #category : #resolving }

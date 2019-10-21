@@ -1,12 +1,12 @@
 Class {
 	#name : #IREntitySUBPRGCALL,
 	#superclass : #IREntityAssociation,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #accessing }
 IREntitySUBPRGCALL >> famixTargetClass [
-	^FAMIXFunction
+	^FamixFortranFunction
 ]
 
 { #category : #resolving }
@@ -23,7 +23,7 @@ IREntitySUBPRGCALL >> toFamixSource: famixSource soleTarget: famixTarget [
 { #category : #converting }
 IREntitySUBPRGCALL >> toFamixSource: famixSource targets: famixTargets [
 
-	^FAMIXInvocation new
+	^FamixFortranInvocation new
 			signature: (data at: 'name') ;
 			sender: famixSource ;
 			candidates: famixTargets ;

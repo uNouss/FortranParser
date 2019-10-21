@@ -1,14 +1,14 @@
 Class {
 	#name : #IREntityVARIABLE,
 	#superclass : #IREntityNamed,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #accessing }
 IREntityVARIABLE >> famixClass [
 	^(parentIR isKind: 'MODULE')
-		ifTrue: [ FAMIXGlobalVariable ]
-		ifFalse: [ FAMIXLocalVariable ]
+		ifTrue: [ FamixFortranGlobalVariable ]
+		ifFalse: [ FamixFortranLocalVariable ]
 ]
 
 { #category : #resolving }

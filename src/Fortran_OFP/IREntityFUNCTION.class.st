@@ -1,12 +1,12 @@
 Class {
 	#name : #IREntityFUNCTION,
 	#superclass : #IREntityNamed,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #accessing }
 IREntityFUNCTION >> famixClass [
-	^FAMIXFunction
+	^FamixFortranFunction
 ]
 
 { #category : #resolving }
@@ -23,6 +23,6 @@ IREntityFUNCTION >> resolveLocalReference: aString [
 { #category : #converting }
 IREntityFUNCTION >> setFamixParent [
 	famix fortranOwner: (parentIR famix).
-	parentIR famix class = FAMIXCompilationUnit ifFalse: [
+	parentIR famix class = FamixFortranCompilationUnit ifFalse: [
 		famix container: (parentIR famix)]
 ]

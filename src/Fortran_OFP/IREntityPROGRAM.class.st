@@ -1,12 +1,12 @@
 Class {
 	#name : #IREntityPROGRAM,
 	#superclass : #IREntityNamed,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #accessing }
 IREntityPROGRAM >> famixClass [
-	^FAMIXProgram 
+	^FamixFortranProgram 
 ]
 
 { #category : #resolving }

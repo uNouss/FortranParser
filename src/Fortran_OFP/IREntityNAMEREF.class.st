@@ -1,7 +1,7 @@
 Class {
 	#name : #IREntityNAMEREF,
 	#superclass : #IREntityAssociation,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #converting }
@@ -15,7 +15,7 @@ IREntityNAMEREF >> createStub: stubClass named: aString [
 { #category : #accessing }
 IREntityNAMEREF >> famixTargetClass [
 	"by default will assume a localVariable"
-	^FAMIXLocalVariable
+	^FamixFortranLocalVariable
 ]
 
 { #category : #resolving }

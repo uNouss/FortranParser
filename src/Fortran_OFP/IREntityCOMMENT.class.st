@@ -1,12 +1,12 @@
 Class {
 	#name : #IREntityCOMMENT,
 	#superclass : #IREntity,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #accessing }
 IREntityCOMMENT >> famixClass [
-	^FAMIXComment
+	^FamixFortranComment
 ]
 
 { #category : #testing }

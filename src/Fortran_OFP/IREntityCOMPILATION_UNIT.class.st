@@ -1,12 +1,12 @@
 Class {
 	#name : #'IREntityCOMPILATION_UNIT',
 	#superclass : #IREntityNamed,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #accessing }
 IREntityCOMPILATION_UNIT >> famixClass [
-	^FAMIXCompilationUnit
+	^FamixFortranCompilationUnit
 ]
 
 { #category : #resolving }

@@ -1,7 +1,7 @@
 Class {
 	#name : #IREntityAssociation,
 	#superclass : #IREntity,
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #converting }
@@ -22,7 +22,6 @@ IREntityAssociation >> errorTooManyResolvedFor: aName [
 
 { #category : #accessing }
 IREntityAssociation >> famixClass [
-	"#Famix redefined in IREntityAssociation"
 	self shouldNotImplement 
 ]
 

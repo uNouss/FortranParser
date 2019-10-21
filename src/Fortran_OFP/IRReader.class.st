@@ -18,7 +18,7 @@ Class {
 		'entities',
 		'model'
 	],
-	#category : 'Fortran_OFP'
+	#category : #'Fortran_OFP'
 }
 
 { #category : #'instance creation' }
@@ -61,7 +61,7 @@ IRReader >> entityAtKey: irKey [
 
 { #category : #accessing }
 IRReader >> famixClass [
-	^MooseModel
+	^FamixFortranModel
 ]
 
 { #category : #initialization }
