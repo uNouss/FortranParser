@@ -1,6 +1,6 @@
 Class {
 	#name : #FamixFortranLocalVariable,
-	#superclass : #MooseEntity,
+	#superclass : #FamixFortranNamedEntity,
 	#traits : 'FamixTLocalVariable + FamixTNamespaceEntity + FamixTStructuralEntity',
 	#classTraits : 'FamixTLocalVariable classTrait + FamixTNamespaceEntity classTrait + FamixTStructuralEntity classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
@@ -9,17 +9,10 @@ Class {
 { #category : #meta }
 FamixFortranLocalVariable class >> annotation [
 
-	<MSEClass: #LocalVariable super: #MooseEntity>
+	<MSEClass: #LocalVariable super: #FamixFortranNamedEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self
-]
-
-{ #category : #meta }
-FamixFortranLocalVariable class >> metamodel [
-
-	<generated>
-	^ FamixFortranModel metamodel
 ]
 
 { #category : #meta }
@@ -27,39 +20,4 @@ FamixFortranLocalVariable class >> requirements [
 
 	<generated>
 	^ { FamixFortranFunction }
-]
-
-{ #category : #testing }
-FamixFortranLocalVariable >> isAccess [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranLocalVariable >> isAssociation [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranLocalVariable >> isInvocation [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranLocalVariable >> isNamespace [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranLocalVariable >> isType [
-
-	<generated>
-	^ false
 ]

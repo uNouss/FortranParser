@@ -65,6 +65,7 @@ FamixFortranGenerator >> defineHierarchy [
 	module --|> #TGlobalVariableScope.
 	module --|> #TNamespace.
 
+	globalVariable --|> namedEntity.
 	globalVariable --|> #TStructuralEntity.
 	globalVariable --|> #TGlobalVariable.
 	globalVariable --|> #TDefinedInModule.
@@ -72,6 +73,7 @@ FamixFortranGenerator >> defineHierarchy [
 	globalVariable --|> #TNamespaceEntity.
 
 	function --|> namedEntity.
+	function --|> #TFunction.
 	function --|> #TWithAccesses.
 	function --|> #TWithStatements.
 	function --|> #TNamespace.
@@ -84,6 +86,7 @@ FamixFortranGenerator >> defineHierarchy [
 	function --|> #TNamespaceEntity.
 	function --|> #TWithSignature.
 
+	localVariable --|> namedEntity.
 	localVariable --|> #TStructuralEntity.
 	localVariable --|> #TLocalVariable.
 	localVariable --|> #TNamespaceEntity.
@@ -93,6 +96,7 @@ FamixFortranGenerator >> defineHierarchy [
 	parameter --|> #TParameter.
 	parameter --|> #TNamespaceEntity.
 
+	type --|> namedEntity.
 	type --|> #TType.
 	type --|> #TWithTypeAliases.
 	type --|> #TParameterizedTypeUser.

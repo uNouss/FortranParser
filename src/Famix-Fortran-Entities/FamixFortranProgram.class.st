@@ -35,6 +35,13 @@ FamixFortranProgram >> isAssociation [
 ]
 
 { #category : #testing }
+FamixFortranProgram >> isFunction [
+
+	<generated>
+	^ false
+]
+
+{ #category : #testing }
 FamixFortranProgram >> isInvocation [
 
 	<generated>
