@@ -5,60 +5,31 @@ Offers some simple common functionalities
 Class {
 	#name : #IRResolverTest,
 	#superclass : #IRAbstractTest,
-	#instVars : [
-		'mdl1',
-		'mdl2',
-		'fct1',
-		'fct2',
-		'fct3',
-		'mdl3'
-	],
-	#category : 'Fortran_OFP-Tests'
+	#category : #'Fortran_OFP-Tests'
 }
 
 { #category : #initialization }
 IRResolverTest >> setUp [
 	super setUp.
-	mdl1 := (self makeFamix: FAMIXModule entity: #() key: 'keyMdl1')
-					name: 'mdl1' ;
-					isStub: false ;
-					yourself.
-	mdl2 := (self makeFamix: FAMIXModule entity: #() key: 'keyMdl2')
-					name: 'mdl2' ;
-					isStub: false ;
-					yourself.
-	mdl3 := (self makeFamix: FAMIXModule entity: #() key: 'keyMdl3')
-					name: 'mdl3' ;
-					isStub: false ;
-					yourself.
+	self makeEntity: '{"key":"keyMdl1","kind":"MODULE","data":{"name":"mdl1"}}'.
+	self makeEntity: '{"key":"keyMdl2","kind":"MODULE","data":{"name":"mdl2"}}'.
+	self makeEntity: '{"key":"keyMdl3","kind":"MODULE","data":{"name":"mdl3"}}'.
 
-	fct1 := (self makeFamix: FAMIXFunction entity: #() key: 'keyFct1')
-					name: 'fct1' ;
-					isStub: false ;
-					container: mdl1 ;
-					yourself.
-	fct2 := (self makeFamix: FAMIXFunction entity: #() key: 'keyFct2')
-					name: 'fct2' ;
-					isStub: false ;
-					container: mdl2 ;
-					yourself.
-	fct3 := (self makeFamix: FAMIXFunction entity: #() key: 'keyFct3')
-					name: 'fct1' ;
-					isStub: false ;
-					container: mdl3 ;
-					yourself.
+	self makeEntity: '{"key":"keyFct1","parent":"keyMdl1","kind":"FUNCTION","data":{"name":"fct1"}}'.
+	self makeEntity: '{"key":"keyFct2","parent":"keyMdl2","kind":"FUNCTION","data":{"name":"fct2"}}'.
+	self makeEntity: '{"key":"keyFct3","parent":"keyMdl3","kind":"FUNCTION","data":{"name":"fct3"}}'.
 
 ]
 
 { #category : #tests }
 IRResolverTest >> testResolveNotFound [
-	self assert: (irModel resolveBehavioural: 'fctUnknown' in: mdl1) size equals: 0
+	self assert: (irModel resolveFunction: 'fctUnknown') size equals: 0
 ]
 
 { #category : #tests }
 IRResolverTest >> testResolveOtherModule [
-	self assert: (irModel resolveBehavioural: 'fct2' in: mdl1) size equals: 1.
-	self assert: (irModel resolveBehavioural: 'fct2' in: mdl1) anyOne equals: fct2.
+	self assert: (irModel resolveFunction: 'fct2') size equals: 1.
+	self assert: (irModel resolveFunction: 'fct2') anyOne name equals: 'fct2'.
 ]
 
 { #category : #tests }

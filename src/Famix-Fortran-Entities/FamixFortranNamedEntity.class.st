@@ -14,3 +14,18 @@ FamixFortranNamedEntity class >> annotation [
 	<generated>
 	^self
 ]
+
+{ #category : #'as yet unclassified' }
+FamixFortranNamedEntity >> fortranOwner [
+	^self parents ifEmpty: [ nil ] ifNotEmpty: #anyOne
+]
+
+{ #category : #'as yet unclassified' }
+FamixFortranNamedEntity >> fortranOwner: aFamixEntity [
+	self parentSelectors ifNotEmpty: [ :parentSelectors |
+		parentSelectors do: [ :getter || setter |
+			setter := (getter asString , ':') asSymbol.
+			self perform: setter with: aFamixEntity 
+		]
+	]
+]

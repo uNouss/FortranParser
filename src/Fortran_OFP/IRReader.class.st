@@ -4,7 +4,7 @@ I am responsible for reading a data file as exported by the OFP parser (https://
 	IRReader readFromFile: 'output.ir'
 ]]] 
 
-I can also convert my IREntities into famix ones (thus populating a Famix Model) in an orderly fation
+I can also convert my IREntities into famix ones (thus populating a Famix Model) in an orderly fashion
 [[[
 	self toFamix
 ]]] 
@@ -18,7 +18,7 @@ Class {
 		'entities',
 		'model'
 	],
-	#category : #'Fortran_OFP-IR2Famix'
+	#category : #'Fortran_OFP-Import'
 }
 
 { #category : #'instance creation' }
@@ -34,7 +34,13 @@ IRReader >> addEntity: json [
 	 If inexistant, creates one"
 	| irkey |
 	irkey := json at: 'key' ifAbsentPut: [ 'anonymous' , (counter := counter+1) asString ].
-	^entities at: irkey put: (IREntity from: json)
+	^self at: irkey put: (IREntity from: json)
+
+]
+
+{ #category : #reading }
+IRReader >> at: aKey put: anIR [
+	^entities at: aKey put: anIR
 
 ]
 
@@ -184,13 +190,5 @@ IRReader >> toFamix [
 	self defineFamixEntities.
 	self setFamixParents.
 	self referenceFamixEntities
-
-]
-
-{ #category : #converting }
-IRReader >> toFamixInModel: aMooseModel [
-
-	"definitions of Famix entities"
-
 
 ]

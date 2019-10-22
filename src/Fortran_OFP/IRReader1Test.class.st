@@ -2,7 +2,7 @@
 A test class for testing the behavior of IREntity
 "
 Class {
-	#name : #IREntityTest,
+	#name : #IRReader1Test,
 	#superclass : #IRAbstractTest,
 	#instVars : [
 		'mdl',
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #initialization }
-IREntityTest >> setUp [
+IRReader1Test >> setUp [
 	super setUp.
 	self makeEntity: '{"key":"keyMdl","kind":"MODULE","data":{"name":"mdl"}}'.
 	mdl := (irModel entityAtKey: 'keyMdl')
@@ -27,7 +27,7 @@ IREntityTest >> setUp [
 ]
 
 { #category : #'tests-converting' }
-IREntityTest >> testToFamixFUNCTION [
+IRReader1Test >> testToFamixFUNCTION [
 
 	self assert: (irModel entityAtKey: 'keyFct') notNil.
 	self assert: (irModel entityAtKey: 'keyFct') toFamix class equals: FamixFortranFunction.
@@ -35,7 +35,7 @@ IREntityTest >> testToFamixFUNCTION [
 ]
 
 { #category : #'tests-converting' }
-IREntityTest >> testToFamixMODULE [
+IRReader1Test >> testToFamixMODULE [
 
 	self assert: (irModel entityAtKey: 'keyMdl') notNil.
 	self assert: (irModel entityAtKey: 'keyMdl') toFamix class equals: FamixFortranModule.
@@ -43,7 +43,7 @@ IREntityTest >> testToFamixMODULE [
 ]
 
 { #category : #'tests-converting' }
-IREntityTest >> testToFamixVARIABLE [
+IRReader1Test >> testToFamixVARIABLE [
 	self makeEntity: '{"key":"keyVar1","parent":"keyMdl","kind":"VARIABLE","data":{"name":"var1"}}'.
 	self makeEntity: '{"key":"keyVar2","parent":"keyFct","kind":"VARIABLE","data":{"name":"var2"}}'.
 	self makeEntity: '{"key":"keyVar3",                  "kind":"VARIABLE","data":{"name":"var3"}}'.

@@ -20,11 +20,6 @@ FamixFortranEntity class >> metamodel [
 	^ FamixFortranModel metamodel
 ]
 
-{ #category : #'as yet unclassified' }
-FamixFortranEntity >> fortranOwner [
-	^self parents ifEmpty: [ nil ] ifNotEmpty: #anyOne
-]
-
 { #category : #testing }
 FamixFortranEntity >> isAccess [
 
