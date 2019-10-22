@@ -19,7 +19,7 @@ IREntityTest >> setUp [
 				toFamix ;
 				yourself.
 
-	self makeEntity: '{"key":"keyFct","parent":"mdl","kind":"FUNCTION","data":{"name":"fct"}}'.
+	self makeEntity: '{"key":"keyFct","parent":"keyMdl","kind":"FUNCTION","data":{"name":"fct"}}'.
 	fct := (irModel entityAtKey: 'keyFct')
 				toFamix ;
 				yourself.
@@ -28,35 +28,36 @@ IREntityTest >> setUp [
 
 { #category : #'tests-converting' }
 IREntityTest >> testToFamixFUNCTION [
-	|entity |
-	self makeEntity: '{"key":"key1","parent":"keyMdl","kind":"FUNCTION","data":{"name":"entity2"}}'.
-	entity := irModel entityAtKey: 'key1'.
 
-	self assert: entity toFamix class equals: FamixFortranFunction.
-	self assert: entity toFamix fortranOwner equals: mdl.
+	self assert: (irModel entityAtKey: 'keyFct') notNil.
+	self assert: (irModel entityAtKey: 'keyFct') toFamix class equals: FamixFortranFunction.
+	self assert: (irModel entityAtKey: 'keyFct') toFamix name equals: 'fct'.
 ]
 
 { #category : #'tests-converting' }
 IREntityTest >> testToFamixMODULE [
-	|entity|
-	entity := self makeEntity: {'name' -> 'entity2' . 'kind' -> 'MODULE' } key: 'keyMdl2'.
 
-	self assert: entity toFamix class equals: FamixFortranModule.
-	self assert: entity toFamix parentScope equals: nil.
+	self assert: (irModel entityAtKey: 'keyMdl') notNil.
+	self assert: (irModel entityAtKey: 'keyMdl') toFamix class equals: FamixFortranModule.
+	self assert: (irModel entityAtKey: 'keyMdl') toFamix name equals: 'mdl'.
 ]
 
 { #category : #'tests-converting' }
 IREntityTest >> testToFamixVARIABLE [
-	| entity |
-	entity := self makeEntity: {'name' -> 'var1' . 'kind' -> 'VARIABLE' . 'parent' -> 'keyMdl'} key: 'keyVar1'.
-	self assert: entity toFamix class equals: FamixFortranGlobalVariable.
-	self assert: entity toFamix belongsTo equals: mdl.
+	self makeEntity: '{"key":"keyVar1","parent":"keyMdl","kind":"VARIABLE","data":{"name":"var1"}}'.
+	self makeEntity: '{"key":"keyVar2","parent":"keyFct","kind":"VARIABLE","data":{"name":"var2"}}'.
+	self makeEntity: '{"key":"keyVar3",                  "kind":"VARIABLE","data":{"name":"var3"}}'.
+	irModel setParents.
 
-	entity := self makeEntity: {'name' -> 'var2' . 'kind' -> 'VARIABLE'} key: 'keyVar2'.
-	self assert: entity toFamix class equals: FamixFortranGlobalVariable.
-	self assert: entity toFamix belongsTo equals: nil.
+	self assert: (irModel entityAtKey: 'keyVar1') notNil.
+	self assert: (irModel entityAtKey: 'keyVar1') toFamix class equals: FamixFortranGlobalVariable.
+	self assert: (irModel entityAtKey: 'keyVar1') toFamix name equals: 'var1'.
 
-	entity := self makeEntity: {'name' -> 'var3' . 'kind' -> 'VARIABLE' . 'parent' -> 'keyFct'} key: 'keyVar3'.
-	self assert: entity toFamix class equals: FamixFortranLocalVariable.
-	self assert: entity toFamix parentBehaviouralEntity equals: fct.
+	self assert: (irModel entityAtKey: 'keyVar2') notNil.
+	self assert: (irModel entityAtKey: 'keyVar2') toFamix class equals: FamixFortranLocalVariable.
+	self assert: (irModel entityAtKey: 'keyVar2') toFamix name equals: 'var2'.
+
+	self assert: (irModel entityAtKey: 'keyVar3') notNil.
+	self assert: (irModel entityAtKey: 'keyVar3') toFamix class equals: FamixFortranLocalVariable.
+	self assert: (irModel entityAtKey: 'keyVar3') toFamix name equals: 'var3'.
 ]
