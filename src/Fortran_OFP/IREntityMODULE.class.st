@@ -47,6 +47,5 @@ IREntityMODULE >> resolveNonLocalReference: aString [
 
 { #category : #converting }
 IREntityMODULE >> setFamixParent [
-	famix compilationUnit: parentIR famix.
-	parentIR famix module: famix
+	self flag: 'parents of Module ???'
 ]

@@ -8,18 +8,17 @@ Class {
 }
 
 { #category : #'private utilities' }
-IRAbstractTest >> associateFamix: aFamixClass toEntity: aKey [
-	| fmx |
-	fmx := aFamixClass new.
-	(irModel entityAtKey: aKey) famix: fmx.
-	^ fmx
+IRAbstractTest >> importIR: entityDescription [
+	irModel readFromStream: (ReadStream on: entityDescription).
 
 ]
 
 { #category : #'private utilities' }
-IRAbstractTest >> makeEntity: entityDescription [
-	irModel readFromStream: (ReadStream on: entityDescription).
-
+IRAbstractTest >> mockIR: irEntityClass key: aString [
+	 | ir |
+	ir := irEntityClass new.
+	irModel at: aString put: ir.
+	^ir
 ]
 
 { #category : #initialization }

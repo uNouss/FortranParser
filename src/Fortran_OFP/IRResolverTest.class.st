@@ -11,13 +11,13 @@ Class {
 { #category : #initialization }
 IRResolverTest >> setUp [
 	super setUp.
-	self makeEntity: '{"key":"keyMdl1","kind":"MODULE","data":{"name":"mdl1"}}'.
-	self makeEntity: '{"key":"keyMdl2","kind":"MODULE","data":{"name":"mdl2"}}'.
-	self makeEntity: '{"key":"keyMdl3","kind":"MODULE","data":{"name":"mdl3"}}'.
+	self importIR: '{"key":"keyMdl1","kind":"MODULE","data":{"name":"mdl1"}}'.
+	self importIR: '{"key":"keyMdl2","kind":"MODULE","data":{"name":"mdl2"}}'.
+	self importIR: '{"key":"keyMdl3","kind":"MODULE","data":{"name":"mdl3"}}'.
 
-	self makeEntity: '{"key":"keyFct1","parent":"keyMdl1","kind":"FUNCTION","data":{"name":"fct1"}}'.
-	self makeEntity: '{"key":"keyFct2","parent":"keyMdl2","kind":"FUNCTION","data":{"name":"fct2"}}'.
-	self makeEntity: '{"key":"keyFct3","parent":"keyMdl3","kind":"FUNCTION","data":{"name":"fct3"}}'.
+	self importIR: '{"key":"keyFct1","parent":"keyMdl1","kind":"FUNCTION","data":{"name":"fct1"}}'.
+	self importIR: '{"key":"keyFct2","parent":"keyMdl2","kind":"FUNCTION","data":{"name":"fct2"}}'.
+	self importIR: '{"key":"keyFct3","parent":"keyMdl3","kind":"FUNCTION","data":{"name":"fct3"}}'.
 
 ]
 

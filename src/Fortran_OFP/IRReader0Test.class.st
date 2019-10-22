@@ -7,11 +7,6 @@ Class {
 	#category : #'Fortran_OFP-Tests'
 }
 
-{ #category : #running }
-IRReader0Test >> importIR: aString [
-	irModel readFromStream: (ReadStream on: aString)
-]
-
 { #category : #tests }
 IRReader0Test >> testReadFUNCTION [
 	self importIR: '{"parent":"whatever","kind":"FUNCTION","data":{"name":"entity2"}}'.
@@ -45,8 +40,7 @@ IRReader0Test >> testReadVARIABLE [
 { #category : #tests }
 IRReader0Test >> testSetParentFUNCTION [
 	| entity |
-	entity := (IREntityMODULE new).
-	irModel at: 'keyMdl' put: entity.
+	entity := self mockIR: IREntityMODULE key: 'keyMdl'.
 	self importIR: '{"parent":"keyMdl","key":"keyFct","kind":"FUNCTION","data":{"name":"fct"}}'.
 	irModel setParents.
 
@@ -58,8 +52,7 @@ IRReader0Test >> testSetParentFUNCTION [
 { #category : #tests }
 IRReader0Test >> testSetParentNAMEREF [
 	| entity |
-	entity := (IREntityFUNCTION new).
-	irModel at: 'keyFct' put: entity.
+	entity := self mockIR: IREntityFUNCTION key: 'keyFct'.
 	self importIR: '{"key":"keyRef","parent":"keyFct","kind":"NAMEREF","data":{"name":"entity2"}}'.
 	irModel setParents.
 
@@ -71,8 +64,7 @@ IRReader0Test >> testSetParentNAMEREF [
 { #category : #tests }
 IRReader0Test >> testSetParentVARIABLE [
 	| entity |
-	entity := (IREntityFUNCTION new).
-	irModel at: 'keyFct' put: entity.
+	entity := self mockIR: IREntityFUNCTION key: 'keyFct'.
 	self importIR: '{"key":"keyVar","parent":"keyFct","kind":"VARIABLE","data":{"name":"entity2"}}'.
 	irModel setParents.
 

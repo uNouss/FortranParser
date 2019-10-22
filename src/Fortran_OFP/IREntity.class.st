@@ -30,6 +30,11 @@ IREntity >> famix [
 	^ famix
 ]
 
+{ #category : #acccessing }
+IREntity >> famix: aFamixEntity [
+	famix := aFamixEntity 
+]
+
 { #category : #accessing }
 IREntity >> famixClass [
 	self subclassResponsibility 

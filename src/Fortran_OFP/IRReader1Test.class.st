@@ -11,42 +11,50 @@ Class {
 	#category : #'Fortran_OFP-Tests'
 }
 
-{ #category : #initialization }
-IRReader1Test >> setUp [
-	super setUp.
-	self makeEntity: '{"key":"keyMdl","kind":"MODULE","data":{"name":"mdl"}}'.
-	mdl := (irModel entityAtKey: 'keyMdl')
-				toFamix ;
-				yourself.
+{ #category : #tests }
+IRReader1Test >> testSetFamixParentFUNCTION [
+	self importIR: '{"key":"keyMdl","kind":"MODULE","data":{"name":"mdl"}}'.
+	self importIR: '{"key":"keyFct","parent":"keyMdl","kind":"FUNCTION","data":{"name":"fct"}}'.
+	irModel
+		famix: (FamixFortranModel new) ;
+		setParents ;
+		defineFamixEntities ;
+		setFamixParents.
 
-	self makeEntity: '{"key":"keyFct","parent":"keyMdl","kind":"FUNCTION","data":{"name":"fct"}}'.
-	fct := (irModel entityAtKey: 'keyFct')
-				toFamix ;
-				yourself.
-
+	self assert: (irModel entityAtKey: 'keyFct') notNil.
+	self
+		assert: (irModel entityAtKey: 'keyFct') famix functionOwner
+		equals: (irModel entityAtKey: 'keyMdl') famix
 ]
 
-{ #category : #'tests-converting' }
+{ #category : #tests }
 IRReader1Test >> testToFamixFUNCTION [
+	self importIR: '{"key":"keyFct","parent":"keyMdl","kind":"FUNCTION","data":{"name":"fct"}}'.
 
 	self assert: (irModel entityAtKey: 'keyFct') notNil.
 	self assert: (irModel entityAtKey: 'keyFct') toFamix class equals: FamixFortranFunction.
 	self assert: (irModel entityAtKey: 'keyFct') toFamix name equals: 'fct'.
 ]
 
-{ #category : #'tests-converting' }
+{ #category : #tests }
 IRReader1Test >> testToFamixMODULE [
+	self importIR: '{"key":"keyMdl","kind":"MODULE","data":{"name":"mdl"}}'.
+	irModel
+		toFamix ;
+		setFamixParents.
 
 	self assert: (irModel entityAtKey: 'keyMdl') notNil.
 	self assert: (irModel entityAtKey: 'keyMdl') toFamix class equals: FamixFortranModule.
 	self assert: (irModel entityAtKey: 'keyMdl') toFamix name equals: 'mdl'.
 ]
 
-{ #category : #'tests-converting' }
+{ #category : #tests }
 IRReader1Test >> testToFamixVARIABLE [
-	self makeEntity: '{"key":"keyVar1","parent":"keyMdl","kind":"VARIABLE","data":{"name":"var1"}}'.
-	self makeEntity: '{"key":"keyVar2","parent":"keyFct","kind":"VARIABLE","data":{"name":"var2"}}'.
-	self makeEntity: '{"key":"keyVar3",                  "kind":"VARIABLE","data":{"name":"var3"}}'.
+	self importIR: '{"key":"keyMdl","kind":"MODULE","data":{"name":"mdl"}}'.
+	self importIR: '{"key":"keyFct","kind":"FUNCTION","data":{"name":"fct"}}'.
+	self importIR: '{"key":"keyVar1","parent":"keyMdl","kind":"VARIABLE","data":{"name":"var1"}}'.
+	self importIR: '{"key":"keyVar2","parent":"keyFct","kind":"VARIABLE","data":{"name":"var2"}}'.
+	self importIR: '{"key":"keyVar3",                  "kind":"VARIABLE","data":{"name":"var3"}}'.
 	irModel setParents.
 
 	self assert: (irModel entityAtKey: 'keyVar1') notNil.

@@ -22,7 +22,6 @@ IREntityFUNCTION >> resolveLocalReference: aString [
 
 { #category : #converting }
 IREntityFUNCTION >> setFamixParent [
-	famix fortranOwner: (parentIR famix).
-	parentIR famix class = FamixFortranCompilationUnit ifFalse: [
-		famix container: (parentIR famix)]
+	famix functionOwner: (parentIR famix).
+	famix parentModule: (parentIR famix)
 ]
