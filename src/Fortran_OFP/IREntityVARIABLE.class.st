@@ -30,7 +30,7 @@ IREntityVARIABLE >> resolveReference: aString [
 IREntityVARIABLE >> setFamixParent [
 	| parent |
 	parent := parentIR famix.
-	(parent isBehaviouralEntity)
+	(parent isFunction)
 	ifFalse: [ famix parentScope: parent ]
 	ifTrue: [ famix parentBehaviouralEntity: parent ]
 ]

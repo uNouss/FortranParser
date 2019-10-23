@@ -10,16 +10,48 @@ Class {
 
 { #category : #tests }
 IRReader3Test >> testSetFamixParentFUNCTION [
-	self makeIR: IREntityMODULE key: 'keyMdl'.
-	self importIR: '{"key":"keyFct","parent":"keyMdl","kind":"FUNCTION","data":{"name":"fct"}}'.
-	
-	(irModel entityAtKey: 'keyFct')
-		setParentIfNil: irModel ;
-		toFamix ;
-		setFamixParent.	
+	| ir fmxParent fmxChild |
+	ir := self makeIR: IREntityFUNCTION key: 'keyFct'.
+	fmxChild := FamixFortranFunction new.
+	ir famix: fmxChild.
 
-	self assert: (irModel entityAtKey: 'keyFct') notNil.
-	self
-		assert: (irModel entityAtKey: 'keyFct') famix functionOwner
-		equals: (irModel entityAtKey: 'keyMdl') famix
+	ir parentIR: (self makeIR: IREntityMODULE key: 'keyMdl').
+	fmxParent := FamixFortranModule new.
+	ir parentIR famix: fmxParent.
+
+	ir setFamixParent.	
+
+	self assert: fmxChild functionOwner equals: fmxParent
+]
+
+{ #category : #tests }
+IRReader3Test >> testSetFamixParentGLOBALVAR [
+	| ir fmxParent fmxChild |
+	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
+	fmxChild := FamixFortranGlobalVariable new.
+	ir famix: fmxChild.
+
+	ir parentIR: (self makeIR: IREntityMODULE key: 'keyMdl').
+	fmxParent := FamixFortranModule new.
+	ir parentIR famix: fmxParent.
+
+	ir setFamixParent.	
+
+	self assert: fmxChild parentScope equals: fmxParent
+]
+
+{ #category : #tests }
+IRReader3Test >> testSetFamixParentLOCALVAR [
+	| ir fmxParent fmxChild |
+	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
+	fmxChild := FamixFortranLocalVariable new.
+	ir famix: fmxChild.
+
+	ir parentIR: (self makeIR: IREntityFUNCTION key: 'keyFct').
+	fmxParent := FamixFortranFunction new.
+	ir parentIR famix: fmxParent.
+
+	ir setFamixParent.	
+
+	self assert: fmxChild parentBehaviouralEntity equals: fmxParent
 ]
