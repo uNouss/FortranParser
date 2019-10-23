@@ -9,6 +9,11 @@ IREntityFUNCTION >> famixClass [
 	^FamixFortranFunction
 ]
 
+{ #category : #testing }
+IREntityFUNCTION >> isKind: aString [
+	^ aString = 'FUNCTION'
+]
+
 { #category : #resolving }
 IREntityFUNCTION >> resolveFunction: aString [ 
 	^parentIR resolveFunction: aString 

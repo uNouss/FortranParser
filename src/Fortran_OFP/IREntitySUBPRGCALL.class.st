@@ -9,6 +9,11 @@ IREntitySUBPRGCALL >> famixTargetClass [
 	^FamixFortranFunction
 ]
 
+{ #category : #testing }
+IREntitySUBPRGCALL >> isKind: aString [
+	^ aString = 'SUBPRGCALL'
+]
+
 { #category : #resolving }
 IREntitySUBPRGCALL >> resolveTarget: aString [
 	^parentIR resolveFunction: aString

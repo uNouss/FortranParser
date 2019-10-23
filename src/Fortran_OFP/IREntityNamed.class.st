@@ -14,12 +14,21 @@ IREntityNamed >> name [
 	^ data at: 'name'
 ]
 
+{ #category : #'accessing - private tests' }
+IREntityNamed >> name: aString [
+	CurrentExecutionEnvironment value isTest
+		ifFalse: [ self shouldNotImplement  ].
+
+	data ifNil: [ data := SmallDictionary new ].
+	data at: 'name' put: aString
+]
+
 { #category : #printing }
 IREntityNamed >> printOn: aStream [
 	super printOn: aStream.
 	aStream
 		nextPut: $( ;
-		nextPutAll: self name ;
+		nextPutAll: (self name ifNil: ['']) ;
 		nextPut: $).
 
 ]

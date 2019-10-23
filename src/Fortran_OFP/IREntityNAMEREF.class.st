@@ -18,6 +18,11 @@ IREntityNAMEREF >> famixTargetClass [
 	^FamixFortranLocalVariable
 ]
 
+{ #category : #testing }
+IREntityNAMEREF >> isKind: aString [
+	^ aString = 'NAMEREF'
+]
+
 { #category : #accessing }
 IREntityNAMEREF >> name [
 	^ data at: 'name'

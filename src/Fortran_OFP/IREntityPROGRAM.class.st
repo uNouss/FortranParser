@@ -9,6 +9,11 @@ IREntityPROGRAM >> famixClass [
 	^FamixFortranProgram 
 ]
 
+{ #category : #testing }
+IREntityPROGRAM >> isKind: aString [
+	^ aString = 'PROGRAM'
+]
+
 { #category : #resolving }
 IREntityPROGRAM >> resolveFunction: aString [ 
 	^(famix functions

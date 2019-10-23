@@ -9,6 +9,11 @@ IREntityCOMPILATION_UNIT >> famixClass [
 	^FamixFortranCompilationUnit
 ]
 
+{ #category : #testing }
+IREntityCOMPILATION_UNIT >> isKind: aString [
+	^ aString = 'COMPILATION_UNIT'
+]
+
 { #category : #resolving }
 IREntityCOMPILATION_UNIT >> resolveFunction: aString [ 
 	^(famix module functions

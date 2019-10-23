@@ -9,6 +9,11 @@ IREntityUSEMODULE >> famixTargetClass [
 	^FamixFortranModule
 ]
 
+{ #category : #testing }
+IREntityUSEMODULE >> isKind: aString [
+	^ aString = 'USEMODULE'
+]
+
 { #category : #resolving }
 IREntityUSEMODULE >> resolveTarget: aString [
 	^parentIR resolveModule: aString

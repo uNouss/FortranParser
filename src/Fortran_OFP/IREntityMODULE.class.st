@@ -17,6 +17,11 @@ IREntityMODULE >> famixClass [
 	^FamixFortranModule
 ]
 
+{ #category : #testing }
+IREntityMODULE >> isKind: aString [
+	^ aString = 'MODULE'
+]
+
 { #category : #resolving }
 IREntityMODULE >> resolveFunction: aString [
 	^(self famix functions

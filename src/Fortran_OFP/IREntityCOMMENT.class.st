@@ -10,6 +10,11 @@ IREntityCOMMENT >> famixClass [
 ]
 
 { #category : #testing }
+IREntityCOMMENT >> isKind: aString [
+	^ aString = 'COMMENT'
+]
+
+{ #category : #testing }
 IREntityCOMMENT >> isNamed: aString [
 	^false
 ]

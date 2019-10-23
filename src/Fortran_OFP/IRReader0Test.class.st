@@ -36,39 +36,3 @@ IRReader0Test >> testReadVARIABLE [
 	self assert: irModel entities values anyOne name equals: 'entity2'.
 
 ]
-
-{ #category : #tests }
-IRReader0Test >> testSetParentFUNCTION [
-	| entity |
-	entity := self makeIR: IREntityMODULE key: 'keyMdl'.
-	self importIR: '{"parent":"keyMdl","key":"keyFct","kind":"FUNCTION","data":{"name":"fct"}}'.
-	irModel setParents.
-
-	self assert: (irModel entityAtKey: 'keyFct') notNil.
-	self assert: (irModel entityAtKey: 'keyFct') parentIR equals: entity
-
-]
-
-{ #category : #tests }
-IRReader0Test >> testSetParentNAMEREF [
-	| entity |
-	entity := self makeIR: IREntityFUNCTION key: 'keyFct'.
-	self importIR: '{"key":"keyRef","parent":"keyFct","kind":"NAMEREF","data":{"name":"entity2"}}'.
-	irModel setParents.
-
-	self assert: (irModel entityAtKey: 'keyRef') notNil.
-	self assert: (irModel entityAtKey: 'keyRef') parentIR equals: entity
-
-]
-
-{ #category : #tests }
-IRReader0Test >> testSetParentVARIABLE [
-	| entity |
-	entity := self makeIR: IREntityFUNCTION key: 'keyFct'.
-	self importIR: '{"key":"keyVar","parent":"keyFct","kind":"VARIABLE","data":{"name":"entity2"}}'.
-	irModel setParents.
-
-	self assert: (irModel entityAtKey: 'keyVar') notNil.
-	self assert: (irModel entityAtKey: 'keyVar') parentIR equals: entity
-
-]

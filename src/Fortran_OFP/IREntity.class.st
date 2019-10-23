@@ -25,12 +25,19 @@ IREntity >> data [
 	^data
 ]
 
-{ #category : #acccessing }
+{ #category : #'accessing - private tests' }
+IREntity >> data: aDictionnary [
+	CurrentExecutionEnvironment value isTest
+		ifFalse: [ self shouldNotImplement  ].
+	data := aDictionnary 
+]
+
+{ #category : #accessing }
 IREntity >> famix [
 	^ famix
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 IREntity >> famix: aFamixEntity [
 	famix := aFamixEntity 
 ]
@@ -64,9 +71,23 @@ IREntity >> isNamed: aString [
 	self subclassResponsibility 
 ]
 
+{ #category : #'accessing - private tests' }
+IREntity >> key: aKey [
+	CurrentExecutionEnvironment value isTest
+		ifFalse: [ self shouldNotImplement  ].
+	key := aKey 
+]
+
 { #category : #accessing }
 IREntity >> kind [
 	^ kind
+]
+
+{ #category : #'accessing - private tests' }
+IREntity >> kind: aString [
+	CurrentExecutionEnvironment value isTest
+		ifFalse: [ self shouldNotImplement  ].
+	kind := aString
 ]
 
 { #category : #accessing }
@@ -79,9 +100,23 @@ IREntity >> parentIR [
 	^parentIR 
 ]
 
+{ #category : #'accessing - private tests' }
+IREntity >> parentIR: ir [
+	CurrentExecutionEnvironment value isTest
+		ifFalse: [ self shouldNotImplement  ].
+	parentIR := ir
+]
+
 { #category : #accessing }
 IREntity >> parentKey [
 	^parentKey
+]
+
+{ #category : #'accessing - private tests' }
+IREntity >> parentKey: aKey [
+	CurrentExecutionEnvironment value isTest
+		ifFalse: [ self shouldNotImplement  ].
+	parentKey := aKey 
 ]
 
 { #category : #converting }
