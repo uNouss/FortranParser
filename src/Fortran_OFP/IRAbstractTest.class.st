@@ -14,7 +14,7 @@ IRAbstractTest >> importIR: entityDescription [
 ]
 
 { #category : #'private utilities' }
-IRAbstractTest >> mockIR: irEntityClass key: aString [
+IRAbstractTest >> makeIR: irEntityClass key: aString [
 	 | ir |
 	ir := irEntityClass new.
 	irModel at: aString put: ir.

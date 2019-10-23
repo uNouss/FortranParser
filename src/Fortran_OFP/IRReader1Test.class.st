@@ -13,13 +13,13 @@ Class {
 
 { #category : #tests }
 IRReader1Test >> testSetFamixParentFUNCTION [
-	self importIR: '{"key":"keyMdl","kind":"MODULE","data":{"name":"mdl"}}'.
+	self makeIR: IREntityMODULE key: 'keyMdl'.
 	self importIR: '{"key":"keyFct","parent":"keyMdl","kind":"FUNCTION","data":{"name":"fct"}}'.
-	irModel
-		famix: (FamixFortranModel new) ;
-		setParents ;
-		defineFamixEntities ;
-		setFamixParents.
+	
+	(irModel entityAtKey: 'keyFct')
+		setParentIfNil: irModel ;
+		toFamix ;
+		setFamixParent.	
 
 	self assert: (irModel entityAtKey: 'keyFct') notNil.
 	self

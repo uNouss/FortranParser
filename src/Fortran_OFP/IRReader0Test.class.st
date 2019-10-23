@@ -40,7 +40,7 @@ IRReader0Test >> testReadVARIABLE [
 { #category : #tests }
 IRReader0Test >> testSetParentFUNCTION [
 	| entity |
-	entity := self mockIR: IREntityMODULE key: 'keyMdl'.
+	entity := self makeIR: IREntityMODULE key: 'keyMdl'.
 	self importIR: '{"parent":"keyMdl","key":"keyFct","kind":"FUNCTION","data":{"name":"fct"}}'.
 	irModel setParents.
 
@@ -52,7 +52,7 @@ IRReader0Test >> testSetParentFUNCTION [
 { #category : #tests }
 IRReader0Test >> testSetParentNAMEREF [
 	| entity |
-	entity := self mockIR: IREntityFUNCTION key: 'keyFct'.
+	entity := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	self importIR: '{"key":"keyRef","parent":"keyFct","kind":"NAMEREF","data":{"name":"entity2"}}'.
 	irModel setParents.
 
@@ -64,7 +64,7 @@ IRReader0Test >> testSetParentNAMEREF [
 { #category : #tests }
 IRReader0Test >> testSetParentVARIABLE [
 	| entity |
-	entity := self mockIR: IREntityFUNCTION key: 'keyFct'.
+	entity := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	self importIR: '{"key":"keyVar","parent":"keyFct","kind":"VARIABLE","data":{"name":"entity2"}}'.
 	irModel setParents.
 

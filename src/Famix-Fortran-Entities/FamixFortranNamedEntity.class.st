@@ -14,8 +14,3 @@ FamixFortranNamedEntity class >> annotation [
 	<generated>
 	^self
 ]
-
-{ #category : #'as yet unclassified' }
-FamixFortranNamedEntity >> fortranOwner [
-	^self parents ifEmpty: [ nil ] ifNotEmpty: #anyOne
-]
