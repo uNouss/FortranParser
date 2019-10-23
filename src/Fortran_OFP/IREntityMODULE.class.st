@@ -4,14 +4,6 @@ Class {
 	#category : #'Fortran_OFP-IRModel'
 }
 
-{ #category : #resolving }
-IREntityMODULE class >> resolveLocalName: aString forFamixModule: module [
-	"dirty trick to avoid implementing resolve methods in Famix classes"
-	^(module functions select: [ :famixFunction | famixFunction name = aString ]) ,
-		(module globalVariables select: [ :famixVar | famixVar name = aString ])
-
-]
-
 { #category : #accessing }
 IREntityMODULE >> famixClass [
 	^FamixFortranModule
@@ -24,8 +16,7 @@ IREntityMODULE >> isKind: aString [
 
 { #category : #resolving }
 IREntityMODULE >> resolveFunction: aString [
-	^(self famix functions
-						select: [ :f | f name = aString ])
+	^(self resolveLocalFunction: aString)
 		ifEmpty: [ self resolveImportedFunction: aString ]
 
 ]
@@ -38,8 +29,27 @@ IREntityMODULE >> resolveImportedFunction: aString [
 ]
 
 { #category : #resolving }
+IREntityMODULE >> resolveLocalFunction: aString [
+	^ self famix functions select: [ :fct | fct name = aString ]
+
+]
+
+{ #category : #resolving }
+IREntityMODULE >> resolveLocalName: aString [
+	^(self resolveLocalVar: aString) , (self resolveLocalFunction: aString)
+
+]
+
+{ #category : #resolving }
 IREntityMODULE >> resolveLocalReference: aString [
-	^IREntityMODULE resolveLocalName: aString forFamixModule: self famix
+	^IREntityMODULE resolveLocalName: aString
+]
+
+{ #category : #resolving }
+IREntityMODULE >> resolveLocalVariable: aString [
+
+	^ self famix globalVariables select: [ :famixVar | famixVar name = aString ]
+
 ]
 
 { #category : #resolving }

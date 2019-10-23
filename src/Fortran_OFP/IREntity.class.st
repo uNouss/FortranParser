@@ -58,7 +58,7 @@ IREntity >> fromJSON: json [
 
 { #category : #testing }
 IREntity >> isAnonymous [
-	^ key beginsWith: 'anonymous'
+	^ key beginsWith: '_anonymous'
 ]
 
 { #category : #testing }

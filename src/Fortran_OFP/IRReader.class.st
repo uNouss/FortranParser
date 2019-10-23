@@ -161,6 +161,15 @@ IRReader >> resolveReference: aString [
 		thenCollect: #famix
 ]
 
+{ #category : #resolving }
+IRReader >> resolveVariable: aString [
+	^self entities values
+		select: [ :ir |
+			(ir isNamed: aString) and: [
+				ir isKind: 'VARIABLE' ] ]
+		thenCollect: #famix
+]
+
 { #category : #converting }
 IRReader >> setFamixParents [
 	entities valuesDo: [ :anIr |

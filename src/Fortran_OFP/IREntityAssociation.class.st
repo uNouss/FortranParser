@@ -31,6 +31,12 @@ IREntityAssociation >> famixTargetClass [
 ]
 
 { #category : #testing }
+IREntityAssociation >> isAnonymous [
+	"optimization because associations should always be anonymous"
+	^true
+]
+
+{ #category : #testing }
 IREntityAssociation >> isNamed: aString [
 	^false
 ]

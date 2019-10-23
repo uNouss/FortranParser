@@ -58,6 +58,18 @@ FamixFortranGenerator >> defineHierarchy [
 	invocation --|> #TInvocation.
 	invocation --|> #TWithSignature.
 
+	compilationUnit --|> namedEntity.
+	compilationUnit --|> #TWithFunctions.
+	compilationUnit --|> #TWithTypes.
+	compilationUnit --|> #TGlobalVariableScope.
+	"compilationUnit --|> #TNamespace.  ???"
+
+	program --|> namedEntity.
+	program --|> #TWithFunctions.
+	program --|> #TWithTypes.
+	program --|> #TGlobalVariableScope.
+	program --|> #TNamespace.
+
 	module --|> namedEntity.
 	module --|> #TModule.
 	module --|> #TWithFunctions.

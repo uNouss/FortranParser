@@ -17,12 +17,22 @@ IREntityVARIABLE >> resolveLocalReference: aString [
 ]
 
 { #category : #resolving }
+IREntityVARIABLE >> resolveLocalVariable: aString [
+	^#()
+]
+
+{ #category : #resolving }
 IREntityVARIABLE >> resolveNonLocalReference: aString [
 	^#()
 ]
 
 { #category : #resolving }
 IREntityVARIABLE >> resolveReference: aString [
+	^#()
+]
+
+{ #category : #resolving }
+IREntityVARIABLE >> resolveVariable: aString [
 	^#()
 ]
 

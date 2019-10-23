@@ -19,5 +19,5 @@ FamixFortranFunction class >> annotation [
 FamixFortranFunction class >> requirements [
 
 	<generated>
-	^ { FamixFortranModule }
+	^ { FamixFortranCompilationUnit. FamixFortranModule. FamixFortranProgram }
 ]

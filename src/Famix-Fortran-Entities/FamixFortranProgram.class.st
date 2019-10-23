@@ -1,70 +1,16 @@
 Class {
 	#name : #FamixFortranProgram,
-	#superclass : #MooseEntity,
+	#superclass : #FamixFortranNamedEntity,
+	#traits : 'FamixTGlobalVariableScope + FamixTNamespace + FamixTWithFunctions + FamixTWithTypes',
+	#classTraits : 'FamixTGlobalVariableScope classTrait + FamixTNamespace classTrait + FamixTWithFunctions classTrait + FamixTWithTypes classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 
 { #category : #meta }
 FamixFortranProgram class >> annotation [
 
-	<MSEClass: #Program super: #MooseEntity>
+	<MSEClass: #Program super: #FamixFortranNamedEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self
-]
-
-{ #category : #meta }
-FamixFortranProgram class >> metamodel [
-
-	<generated>
-	^ FamixFortranModel metamodel
-]
-
-{ #category : #testing }
-FamixFortranProgram >> isAccess [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranProgram >> isAssociation [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranProgram >> isFunction [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranProgram >> isInvocation [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranProgram >> isNamespace [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranProgram >> isStructuralEntity [
-
-	<generated>
-	^ false
-]
-
-{ #category : #testing }
-FamixFortranProgram >> isType [
-
-	<generated>
-	^ false
 ]

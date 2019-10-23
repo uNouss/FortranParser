@@ -39,6 +39,11 @@ IREntityNamed >> resolveLocalReference: aString [
 ]
 
 { #category : #resolving }
+IREntityNamed >> resolveLocalVariable: aString [
+	self subclassResponsibility 
+]
+
+{ #category : #resolving }
 IREntityNamed >> resolveModule: aString [
 	^parentIR resolveModule: aString
 ]
@@ -51,6 +56,12 @@ IREntityNamed >> resolveNonLocalReference: aString [
 { #category : #resolving }
 IREntityNamed >> resolveReference: aString [
 	^(self resolveLocalReference: aString)
+		ifEmpty: [ self resolveNonLocalReference: aString ]
+]
+
+{ #category : #resolving }
+IREntityNamed >> resolveVariable: aString [
+	^(self resolveLocalVariable: aString)
 		ifEmpty: [ self resolveNonLocalReference: aString ]
 ]
 
