@@ -3,13 +3,13 @@ A test class for testing the behavior of IntermediaryRepresentations classes.
 Offers some simple common functionalities
 "
 Class {
-	#name : #IRResolverTest,
+	#name : #IRImport4Test,
 	#superclass : #IRAbstractTest,
 	#category : #'Fortran_OFP-Tests'
 }
 
 { #category : #initialization }
-IRResolverTest >> setUp [
+IRImport4Test >> setUp [
 	super setUp.
 	self importIR: '{"key":"keyMdl1","kind":"MODULE","data":{"name":"mdl1"}}'.
 	self importIR: '{"key":"keyMdl2","kind":"MODULE","data":{"name":"mdl2"}}'.
@@ -22,24 +22,22 @@ IRResolverTest >> setUp [
 ]
 
 { #category : #tests }
-IRResolverTest >> testResolveNotFound [
+IRImport4Test >> testResolveFunctionInModule [
+	| fct fmx ir |
+	fmx := FamixFortranModule new.
+	ir := 	self makeIR: IREntityMODULE key: 'keyMdl'.
+	ir famix: fmx.
+	
+	fct := FamixFortranFunction new
+				name: 'fct' ;
+				functionOwner: fmx ;
+				yourself.
+
+	self assert: (ir resolveFunction: 'fct') size equals: 1.
+	self assert: (ir resolveFunction: 'fct') anyOne equals: fct.
+]
+
+{ #category : #tests }
+IRImport4Test >> testResolveFunctionNotFound [
 	self assert: (irModel resolveFunction: 'fctUnknown') size equals: 0
-]
-
-{ #category : #tests }
-IRResolverTest >> testResolveOtherModule [
-	self assert: (irModel resolveFunction: 'fct2') size equals: 1.
-	self assert: (irModel resolveFunction: 'fct2') anyOne name equals: 'fct2'.
-]
-
-{ #category : #tests }
-IRResolverTest >> testResolveSameModule [
-	self assert: (irModel resolveBehavioural: 'fct1' in: mdl1) size equals: 1.
-	self assert: (irModel resolveBehavioural: 'fct1' in: mdl1) anyOne equals: fct1.
-
-]
-
-{ #category : #tests }
-IRResolverTest >> testResolveSeveralFound [
-	self assert: (irModel resolveBehavioural: 'fct1' in: mdl2) size equals: 2
 ]

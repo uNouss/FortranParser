@@ -1,5 +1,5 @@
 Class {
-	#name : #IRReader2Test,
+	#name : #IRImport2Test,
 	#superclass : #IRAbstractTest,
 	#instVars : [
 		'mdl',
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #tests }
-IRReader2Test >> testToFamixFUNCTION [
+IRImport2Test >> testToFamixFUNCTION [
 	| ir fmx |
 	ir := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	ir name: 'fct'.
@@ -20,7 +20,7 @@ IRReader2Test >> testToFamixFUNCTION [
 ]
 
 { #category : #tests }
-IRReader2Test >> testToFamixMODULE [
+IRImport2Test >> testToFamixMODULE [
 	| ir fmx |
 	ir := self makeIR: IREntityMODULE key: 'keyMdl'.
 	ir name: 'mdl'.
@@ -33,7 +33,7 @@ IRReader2Test >> testToFamixMODULE [
 ]
 
 { #category : #tests }
-IRReader2Test >> testToFamixVARIABLE_localToFunction [
+IRImport2Test >> testToFamixVARIABLE_localToFunction [
 	| ir fmx |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	ir name: 'var'.
@@ -47,7 +47,7 @@ IRReader2Test >> testToFamixVARIABLE_localToFunction [
 ]
 
 { #category : #tests }
-IRReader2Test >> testToFamixVARIABLE_localToModule [
+IRImport2Test >> testToFamixVARIABLE_localToModule [
 	| ir fmx |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	ir name: 'var'.
@@ -61,7 +61,7 @@ IRReader2Test >> testToFamixVARIABLE_localToModule [
 ]
 
 { #category : #tests }
-IRReader2Test >> testToFamixVARIABLE_localToNothing [
+IRImport2Test >> testToFamixVARIABLE_localToNothing [
 	| ir fmx |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	ir name: 'var'.

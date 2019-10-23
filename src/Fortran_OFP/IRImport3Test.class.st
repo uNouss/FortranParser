@@ -1,5 +1,5 @@
 Class {
-	#name : #IRReader3Test,
+	#name : #IRImport3Test,
 	#superclass : #IRAbstractTest,
 	#instVars : [
 		'mdl',
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #tests }
-IRReader3Test >> testSetFamixParentFUNCTION [
+IRImport3Test >> testSetFamixParentFUNCTION [
 	| ir fmxParent fmxChild |
 	ir := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	fmxChild := FamixFortranFunction new.
@@ -25,7 +25,7 @@ IRReader3Test >> testSetFamixParentFUNCTION [
 ]
 
 { #category : #tests }
-IRReader3Test >> testSetFamixParentGLOBALVAR [
+IRImport3Test >> testSetFamixParentGLOBALVAR [
 	| ir fmxParent fmxChild |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	fmxChild := FamixFortranGlobalVariable new.
@@ -41,7 +41,7 @@ IRReader3Test >> testSetFamixParentGLOBALVAR [
 ]
 
 { #category : #tests }
-IRReader3Test >> testSetFamixParentLOCALVAR [
+IRImport3Test >> testSetFamixParentLOCALVAR [
 	| ir fmxParent fmxChild |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	fmxChild := FamixFortranLocalVariable new.

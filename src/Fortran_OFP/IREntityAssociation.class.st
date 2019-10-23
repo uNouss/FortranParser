@@ -65,7 +65,7 @@ IREntityAssociation >> toFamixSource: famixSource soleTarget: famixTarget [
 
 { #category : #converting }
 IREntityAssociation >> toFamixSource: famixSource targets: famixTargets [
-	"by default assume there should be exactly one target
+	"by default assumes there should be exactly one target
 		if too many, raise an exception ; if not enough, create a stub"
 
 	famixTargets size > 1

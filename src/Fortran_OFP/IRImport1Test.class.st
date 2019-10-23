@@ -2,7 +2,7 @@
 A test class for testing the behavior of IREntity
 "
 Class {
-	#name : #IRReader1Test,
+	#name : #IRImport1Test,
 	#superclass : #IRAbstractTest,
 	#instVars : [
 		'mdl',
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #tests }
-IRReader1Test >> testSetParentFUNCTION [
+IRImport1Test >> testSetParentFUNCTION [
 	| parent child |
 	parent := self makeIR: IREntityMODULE key: 'keyMdl'.
 	child := self makeIR: IREntityFUNCTION key: 'keyFct'.
@@ -25,7 +25,7 @@ IRReader1Test >> testSetParentFUNCTION [
 ]
 
 { #category : #tests }
-IRReader1Test >> testSetParentNAMEREF [
+IRImport1Test >> testSetParentNAMEREF [
 	| parent child |
 	parent := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	child := self makeIR: IREntityNAMEREF key: 'keyRef'.
@@ -38,7 +38,7 @@ IRReader1Test >> testSetParentNAMEREF [
 ]
 
 { #category : #tests }
-IRReader1Test >> testSetParentVARIABLE [
+IRImport1Test >> testSetParentVARIABLE [
 	| parent child |
 	parent := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	child := self makeIR: IREntityVARIABLE key: 'keyVar'.
