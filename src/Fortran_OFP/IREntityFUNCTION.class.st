@@ -21,8 +21,12 @@ IREntityFUNCTION >> resolveFunction: aString [
 
 { #category : #resolving }
 IREntityFUNCTION >> resolveLocalReference: aString [
+	^self resolveLocalVariable: aString
+]
+
+{ #category : #resolving }
+IREntityFUNCTION >> resolveLocalVariable: aString [
 	^famix localVariables select: [ :famixVar | famixVar name = aString ]
-		
 ]
 
 { #category : #converting }

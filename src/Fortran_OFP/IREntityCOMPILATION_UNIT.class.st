@@ -26,7 +26,13 @@ IREntityCOMPILATION_UNIT >> resolveFunction: aString [
 
 { #category : #resolving }
 IREntityCOMPILATION_UNIT >> resolveLocalReference: aString [
-	^IREntityMODULE resolveLocalName: aString forFamixModule: famix module
+	^(self famix functions select: [ :famixFct | famixFct name = aString ]) ,
+		(self resolveLocalVariable: aString)
+]
+
+{ #category : #resolving }
+IREntityCOMPILATION_UNIT >> resolveLocalVariable: aString [
+	^(self famix globalVariables select: [ :famixVar | famixVar name = aString ])
 ]
 
 { #category : #converting }

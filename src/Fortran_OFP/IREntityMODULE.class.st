@@ -42,7 +42,9 @@ IREntityMODULE >> resolveLocalName: aString [
 
 { #category : #resolving }
 IREntityMODULE >> resolveLocalReference: aString [
-	^IREntityMODULE resolveLocalName: aString
+	^(self famix functions select: [ :famixFct | famixFct name = aString ]) ,
+		(self famix globalVariables select: [ :famixVar | famixVar name = aString ])
+
 ]
 
 { #category : #resolving }
@@ -54,7 +56,7 @@ IREntityMODULE >> resolveLocalVariable: aString [
 
 { #category : #resolving }
 IREntityMODULE >> resolveNonLocalReference: aString [
-	^self famix usedModules flatCollect: [ :famixModule |
+	^self famix importedEntities flatCollect: [ :famixModule |
 		(famixModule functions select: [ :famixFunction | famixFunction name = aString ]) ,
 		(famixModule globalVariables select: [ :famixVar | famixVar name = aString ])
 	]
@@ -62,5 +64,5 @@ IREntityMODULE >> resolveNonLocalReference: aString [
 
 { #category : #converting }
 IREntityMODULE >> setFamixParent [
-	self flag: 'parents of Module ???'
+	famix compilationUnit: (parentIR famix)
 ]

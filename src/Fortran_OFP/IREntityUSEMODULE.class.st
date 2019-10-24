@@ -21,5 +21,8 @@ IREntityUSEMODULE >> resolveTarget: aString [
 
 { #category : #converting }
 IREntityUSEMODULE >> toFamixSource: famixSource soleTarget: famixTarget [
-	^famixSource addUse: famixTarget
+	| imported |
+	imported := famixSource importedEntities ifNil: [ OrderedCollection new ].
+	imported add: famixTarget.
+	famixSource importedEntities: imported
 ]

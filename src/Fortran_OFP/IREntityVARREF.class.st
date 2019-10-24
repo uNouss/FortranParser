@@ -13,3 +13,8 @@ IREntityVARREF >> isKind: aString [
 IREntityVARREF >> resolveTarget: aString [
 	^parentIR resolveVariable: aString
 ]
+
+{ #category : #accessing }
+IREntityVARREF >> targetName [
+	^data at: 'assigntLHS'
+]

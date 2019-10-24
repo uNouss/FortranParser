@@ -11,7 +11,9 @@ Class {
 		'invocation',
 		'access',
 		'compilationUnit',
-		'program'
+		'program',
+		'tImportable',
+		'tWithImports'
 	],
 	#category : #'Famix-Fortran-Generator'
 }
@@ -66,6 +68,8 @@ FamixFortranGenerator >> defineHierarchy [
 
 	module --|> namedEntity.
 	module --|> #TModule.
+	module --|> #TImportable.
+	module --|> #TWithImports.
 	module --|> #TWithFunctions.
 	module --|> #TWithTypes.
 	module --|> #TGlobalVariableScope.
@@ -85,6 +89,7 @@ FamixFortranGenerator >> defineHierarchy [
 	program --|> #TWithAccesses.
 	program --|> #TWithInvocations.
 	program --|> #TDefinedInModule.
+	program --|> #TWithImports.
 	program --|> #TNamespaceEntity.
 	program --|> #TNamespace.
 
@@ -119,4 +124,28 @@ FamixFortranGenerator >> defineHierarchy [
 	type --|> #TDefinedInModule.
 	type --|> #TNamespaceEntity.
 
+]
+
+{ #category : #definition }
+FamixFortranGenerator >> defineRelations [
+	super defineRelations.
+
+	((tWithImports property: #importedEntities)
+			comment: 'The entities that are imported by this one' ;
+			source)
+		*-*
+	((tImportable property: #importers)
+			comment: 'The entities that import this one' ;
+			target ;
+			derived).
+			
+	compilationUnit <>- module.
+]
+
+{ #category : #definition }
+FamixFortranGenerator >> defineTraits [
+    super defineTraits.
+
+    tImportable := builder newTraitNamed: #TImportable comment: 'I can be imported (as importing a package)'.
+    tWithImports := builder newTraitNamed: #TWithImports comment: 'I can import things (eg a package)'.
 ]
