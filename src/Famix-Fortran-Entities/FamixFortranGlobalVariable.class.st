@@ -19,5 +19,5 @@ FamixFortranGlobalVariable class >> annotation [
 FamixFortranGlobalVariable class >> requirements [
 
 	<generated>
-	^ { FamixFortranCompilationUnit. FamixFortranModule. FamixFortranProgram }
+	^ { FamixFortranCompilationUnit. FamixFortranModule }
 ]

@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranCompilationUnit,
 	#superclass : #FamixFortranNamedEntity,
-	#traits : 'FamixTGlobalVariableScope + FamixTWithFunctions + FamixTWithTypes',
-	#classTraits : 'FamixTGlobalVariableScope classTrait + FamixTWithFunctions classTrait + FamixTWithTypes classTrait',
+	#traits : 'FamixTGlobalVariableScope + FamixTNamespace + FamixTWithFunctions + FamixTWithTypes',
+	#classTraits : 'FamixTGlobalVariableScope classTrait + FamixTNamespace classTrait + FamixTWithFunctions classTrait + FamixTWithTypes classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 

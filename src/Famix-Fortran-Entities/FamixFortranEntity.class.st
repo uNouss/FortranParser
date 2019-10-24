@@ -35,6 +35,11 @@ FamixFortranEntity >> isAssociation [
 ]
 
 { #category : #testing }
+FamixFortranEntity >> isBehaviouralEntity [
+	^false
+]
+
+{ #category : #testing }
 FamixFortranEntity >> isFunction [
 
 	<generated>

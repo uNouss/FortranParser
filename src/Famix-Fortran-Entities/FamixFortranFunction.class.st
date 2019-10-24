@@ -19,5 +19,10 @@ FamixFortranFunction class >> annotation [
 FamixFortranFunction class >> requirements [
 
 	<generated>
-	^ { FamixFortranCompilationUnit. FamixFortranModule. FamixFortranProgram }
+	^ { FamixFortranCompilationUnit. FamixFortranModule }
+]
+
+{ #category : #testing }
+FamixFortranFunction >> isBehaviouralEntity [
+	^true
 ]

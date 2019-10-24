@@ -62,13 +62,7 @@ FamixFortranGenerator >> defineHierarchy [
 	compilationUnit --|> #TWithFunctions.
 	compilationUnit --|> #TWithTypes.
 	compilationUnit --|> #TGlobalVariableScope.
-	"compilationUnit --|> #TNamespace.  ???"
-
-	program --|> namedEntity.
-	program --|> #TWithFunctions.
-	program --|> #TWithTypes.
-	program --|> #TGlobalVariableScope.
-	program --|> #TNamespace.
+	compilationUnit --|> #TNamespace.
 
 	module --|> namedEntity.
 	module --|> #TModule.
@@ -84,13 +78,23 @@ FamixFortranGenerator >> defineHierarchy [
 	globalVariable --|> #TPossibleStub.
 	globalVariable --|> #TNamespaceEntity.
 
+	program --|> namedEntity.
+	program --|> #TWithTypes.
+	program --|> #TWithLocalVariables.
+	program --|> #TWithStatements.
+	program --|> #TWithAccesses.
+	program --|> #TWithInvocations.
+	program --|> #TDefinedInModule.
+	program --|> #TNamespaceEntity.
+	program --|> #TNamespace.
+
 	function --|> namedEntity.
 	function --|> #TFunction.
-	function --|> #TWithAccesses.
 	function --|> #TWithStatements.
+	function --|> #TWithAccesses.
+	function --|> #TWithInvocations.
 	function --|> #TNamespace.
 	function --|> #TInvocable.
-	function --|> #TWithInvocations.
 	function --|> #TPossibleStub.
 	function --|> #TWithLocalVariables.
 	function --|> #TWithParameters.

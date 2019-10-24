@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranProgram,
 	#superclass : #FamixFortranNamedEntity,
-	#traits : 'FamixTGlobalVariableScope + FamixTNamespace + FamixTWithFunctions + FamixTWithTypes',
-	#classTraits : 'FamixTGlobalVariableScope classTrait + FamixTNamespace classTrait + FamixTWithFunctions classTrait + FamixTWithTypes classTrait',
+	#traits : 'FamixTDefinedInModule + FamixTNamespace + FamixTNamespaceEntity + FamixTWithAccesses + FamixTWithInvocations + FamixTWithLocalVariables + FamixTWithStatements + FamixTWithTypes',
+	#classTraits : 'FamixTDefinedInModule classTrait + FamixTNamespace classTrait + FamixTNamespaceEntity classTrait + FamixTWithAccesses classTrait + FamixTWithInvocations classTrait + FamixTWithLocalVariables classTrait + FamixTWithStatements classTrait + FamixTWithTypes classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 
@@ -13,4 +13,9 @@ FamixFortranProgram class >> annotation [
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self
+]
+
+{ #category : #testing }
+FamixFortranProgram >> isBehaviouralEntity [
+	^true
 ]

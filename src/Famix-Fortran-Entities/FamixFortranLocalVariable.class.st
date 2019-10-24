@@ -19,5 +19,5 @@ FamixFortranLocalVariable class >> annotation [
 FamixFortranLocalVariable class >> requirements [
 
 	<generated>
-	^ { FamixFortranFunction }
+	^ { FamixFortranFunction. FamixFortranProgram }
 ]

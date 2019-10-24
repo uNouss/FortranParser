@@ -27,6 +27,5 @@ IREntityFUNCTION >> resolveLocalReference: aString [
 
 { #category : #converting }
 IREntityFUNCTION >> setFamixParent [
-	famix functionOwner: (parentIR famix).
-	famix parentModule: (parentIR famix)
+	famix functionOwner: (parentIR famix)
 ]
