@@ -50,8 +50,23 @@ IREntityAssociation >> printOn: aStream [
 ]
 
 { #category : #resolving }
+IREntityAssociation >> resolveFunction: aString [
+	^parentIR resolveFunction: aString
+]
+
+{ #category : #resolving }
+IREntityAssociation >> resolveReference: aString [
+	^parentIR resolveReference: aString
+]
+
+{ #category : #resolving }
 IREntityAssociation >> resolveTarget: aString [
 	self subclassResponsibility 
+]
+
+{ #category : #resolving }
+IREntityAssociation >> resolveVariable: aString [
+	^parentIR resolveVariable: aString
 ]
 
 { #category : #accessing }
