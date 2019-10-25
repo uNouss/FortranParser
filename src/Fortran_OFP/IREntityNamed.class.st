@@ -11,7 +11,7 @@ IREntityNamed >> isNamed: aString [
 
 { #category : #accessing }
 IREntityNamed >> name [
-	^ data at: 'name'
+	^ data at: 'name' ifAbsent: [nil]
 ]
 
 { #category : #'accessing - private tests' }
@@ -76,11 +76,23 @@ IREntityNamed >> setFamixParent [
 ]
 
 { #category : #converting }
+IREntityNamed >> setSourceAnchorToFamix [
+	(famix notNil and: [ self sourceAnchorFile notNil ])
+		ifTrue: [
+			famix sourceAnchor:
+				(FamixFortranIndexedFileAnchor new
+					fileName: self sourceAnchorFile ;
+					startPos: self sourceAnchorStart asInteger ;
+					endPos:   self sourceAnchorEnd   asInteger ;
+					yourself)
+	]
+]
+
+{ #category : #converting }
 IREntityNamed >> toFamix [
-	| fmx |
-	fmx := super toFamix.
-	fmx ifNil: [ ^ self ].
-	^fmx
-		name: (data at: 'name') ;
-		yourself.
+	super toFamix.
+	famix ifNil: [ ^ self ].
+	famix name: (data at: 'name').
+	self setSourceAnchorToFamix.
+	^famix
 ]

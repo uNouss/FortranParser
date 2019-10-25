@@ -15,8 +15,7 @@ Class {
 	#superclass : #IREntity,
 	#instVars : [
 		'counter',
-		'entities',
-		'model'
+		'entities'
 	],
 	#category : #'Fortran_OFP-Import'
 }
@@ -48,7 +47,11 @@ IRReader >> at: aKey put: anIR [
 IRReader >> defineFamixEntities [
 	entities valuesDo: [ :anIr |
 		(anIr isAnonymous)
-		ifFalse: [ famix add: anIr toFamix ]
+		ifFalse: [
+			self mooseModel add: anIr toFamix.
+			anIr famix hasSourceAnchor
+				ifTrue: [ self mooseModel add: anIr famix sourceAnchor ]
+		]
 	].
 
 ]
@@ -88,18 +91,13 @@ IRReader >> isNamed: aString [
 ]
 
 { #category : #accessing }
-IRReader >> model [
-	^ model
-]
-
-{ #category : #accessing }
-IRReader >> model: anObject [
-	model := anObject
-]
-
-{ #category : #accessing }
 IRReader >> mooseModel [
 	^famix
+]
+
+{ #category : #accessing }
+IRReader >> mooseModel: anObject [
+	famix := anObject
 ]
 
 { #category : #reading }

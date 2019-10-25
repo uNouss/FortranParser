@@ -129,6 +129,21 @@ IREntity >> setParentIfNil: irReader [
 
 ]
 
+{ #category : #accessing }
+IREntity >> sourceAnchorEnd [
+	^ data at: 'anchorend' ifAbsent: [nil]
+]
+
+{ #category : #accessing }
+IREntity >> sourceAnchorFile [
+	^ data at: 'anchorfile' ifAbsent: [nil]
+]
+
+{ #category : #accessing }
+IREntity >> sourceAnchorStart [
+	^ data at: 'anchorstart' ifAbsent: [nil]
+]
+
 { #category : #converting }
 IREntity >> toFamix [
 	^famix ifNil: [ famix := self famixClass new].
