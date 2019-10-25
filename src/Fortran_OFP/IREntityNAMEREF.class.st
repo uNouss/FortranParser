@@ -5,6 +5,25 @@ Class {
 }
 
 { #category : #converting }
+IREntityNAMEREF >> createAccessFrom: famixSource to: famixTarget [
+	^ FamixFortranAccess new
+		accessor: famixSource;
+		variable: famixTarget;
+		mooseModel: self mooseModel;
+		yourself
+]
+
+{ #category : #converting }
+IREntityNAMEREF >> createInvocationFrom: famixSource to: famixTargets [
+	^ FamixFortranInvocation new
+		signature: (data at: 'name') ;
+		sender: famixSource ;
+		candidates: famixTargets ;
+		mooseModel: self mooseModel ;
+		yourself
+]
+
+{ #category : #converting }
 IREntityNAMEREF >> createStub: stubClass named: aString [
 	"by default creates a localVariable"
 	^(super createStub: stubClass named: aString)
@@ -35,18 +54,9 @@ IREntityNAMEREF >> resolveTarget: aString [
 
 { #category : #converting }
 IREntityNAMEREF >> toFamixSource: famixSource soleTarget: famixTarget [
-	^famixTarget isBehaviouralEntity
-		ifTrue: [ FAMIXInvocation new
-						signature:  (data at: 'name') ;
-						sender: famixSource ;
-						candidates: {famixTarget} ;
-						mooseModel: self mooseModel ;
-						yourself ]
-		ifFalse: [ FAMIXAccess new
-						accessor: famixSource ;
-						variable: famixTarget ;
-						mooseModel: self mooseModel ;
-						yourself ]
+	^ famixTarget isBehaviouralEntity
+		ifTrue:  [ self createInvocationFrom: famixSource to: {famixTarget} ]
+		ifFalse: [ self createAccessFrom: famixSource to: famixTarget ]
 ]
 
 { #category : #converting }
@@ -61,13 +71,8 @@ IREntityNAMEREF >> toFamixSource: famixSource targets: famixTargets [
 				soleTarget: (self createStub: self famixTargetClass named: self targetName) ].
 	famixTargets size = 1 ifTrue: [
 		^ self toFamixSource: famixSource soleTarget: famixTargets anyOne ].
-	(famixTargets allSatisfy: #isBehaviouralEntity) ifTrue: [
-		^ FAMIXInvocation new
-				signature:  (data at: 'name') ;
-				sender: famixSource ;
-				candidates: famixTargets ;
-				mooseModel: self mooseModel ;
-				yourself ].
+	(famixTargets allSatisfy: #isBehaviouralEntity)
+		ifTrue: [ ^ self createInvocationFrom: famixSource to: famixTargets ].
 
 	self errorTooManyResolvedFor: self targetName
 ]
