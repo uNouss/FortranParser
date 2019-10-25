@@ -23,7 +23,7 @@ IREntityMODULE >> resolveFunction: aString [
 
 { #category : #resolving }
 IREntityMODULE >> resolveImportedFunction: aString [
-	^self famix usedModules flatCollect: [ :m |
+	^self famix importedEntities flatCollect: [ :m |
 		m functions select: [ :f | f name = aString ]
 	]
 ]

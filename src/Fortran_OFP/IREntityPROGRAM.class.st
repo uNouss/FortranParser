@@ -22,16 +22,26 @@ IREntityPROGRAM >> resolveFunction: aString [
 
 { #category : #resolving }
 IREntityPROGRAM >> resolveLocalReference: aString [
-	"different than for modules becuse have LOCAL variables"
-	^(self famix functions select: [ :famixFct | famixFct name = aString ]) ,
-		(self famix localVariables select: [ :famixVar | famixVar name = aString ])
+	^self resolveLocalVariable: aString
+
+]
+
+{ #category : #resolving }
+IREntityPROGRAM >> resolveLocalVariable: aString [
+	^self famix localVariables select: [ :famixVar | famixVar name = aString ]
 
 ]
 
 { #category : #resolving }
 IREntityPROGRAM >> resolveNonLocalReference: aString [
-	^self famix usedModules flatCollect: [ :famixModule |
-		(famixModule functions select: [ :famixFunction | famixFunction name = aString ]) ,
+	^(self famix importedEntities flatCollect: [ :famixModule |
+		(famixModule functions select: [ :famixFunction | famixFunction name = aString ]) ]) ,
+	 (self resolveNonLocalVariable: aString )
+]
+
+{ #category : #resolving }
+IREntityPROGRAM >> resolveNonLocalVariable: aString [
+	^self famix importedEntities flatCollect: [ :famixModule |
 		(famixModule globalVariables select: [ :famixVar | famixVar name = aString ])
 	]
 ]

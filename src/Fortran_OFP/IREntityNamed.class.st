@@ -54,6 +54,11 @@ IREntityNamed >> resolveNonLocalReference: aString [
 ]
 
 { #category : #resolving }
+IREntityNamed >> resolveNonLocalVariable: aString [
+	^parentIR resolveVariable: aString
+]
+
+{ #category : #resolving }
 IREntityNamed >> resolveReference: aString [
 	^(self resolveLocalReference: aString)
 		ifEmpty: [ self resolveNonLocalReference: aString ]
@@ -62,7 +67,7 @@ IREntityNamed >> resolveReference: aString [
 { #category : #resolving }
 IREntityNamed >> resolveVariable: aString [
 	^(self resolveLocalVariable: aString)
-		ifEmpty: [ self resolveNonLocalReference: aString ]
+		ifEmpty: [ self resolveNonLocalVariable: aString ]
 ]
 
 { #category : #converting }
@@ -72,7 +77,10 @@ IREntityNamed >> setFamixParent [
 
 { #category : #converting }
 IREntityNamed >> toFamix [
-	^super toFamix
+	| fmx |
+	fmx := super toFamix.
+	fmx ifNil: [ ^ self ].
+	^fmx
 		name: (data at: 'name') ;
 		yourself.
 ]
