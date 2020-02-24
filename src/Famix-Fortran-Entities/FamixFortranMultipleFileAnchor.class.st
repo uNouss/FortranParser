@@ -9,7 +9,7 @@ Class {
 { #category : #meta }
 FamixFortranMultipleFileAnchor class >> annotation [
 
-	<MSEClass: #MultipleFileAnchor super: #FamixFortranSourceAnchor>
+	<FMClass: #MultipleFileAnchor super: #FamixFortranSourceAnchor>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self

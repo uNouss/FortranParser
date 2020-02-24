@@ -12,10 +12,16 @@ Trait {
 { #category : #meta }
 FamixFortranTImportable classSide >> annotation [
 
-	<MSEClass: #TImportable super: #Object>
+	<FMClass: #TImportable super: #Object>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self
+]
+
+{ #category : #adding }
+FamixFortranTImportable >> addImporter: anObject [
+	<generated>
+	^ self importers add: anObject
 ]
 
 { #category : #accessing }
@@ -23,7 +29,7 @@ FamixFortranTImportable >> importers [
 	"Relation named: #importers type: #FamixFortranTWithImports opposite: #importedEntities"
 
 	<generated>
-	<MSEComment: 'The entities that import this one'>
+	<FMComment: 'The entities that import this one'>
 	<derived>
 	<target>
 	^ importers
@@ -34,5 +40,4 @@ FamixFortranTImportable >> importers: anObject [
 
 	<generated>
 	importers value: anObject
-
 ]

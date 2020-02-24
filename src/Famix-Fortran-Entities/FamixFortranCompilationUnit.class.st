@@ -12,7 +12,7 @@ Class {
 { #category : #meta }
 FamixFortranCompilationUnit class >> annotation [
 
-	<MSEClass: #CompilationUnit super: #FamixFortranNamedEntity>
+	<FMClass: #CompilationUnit super: #FamixFortranNamedEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self
@@ -31,7 +31,6 @@ FamixFortranCompilationUnit >> module: anObject [
 
 	<generated>
 	module := anObject
-
 ]
 
 { #category : #navigation }

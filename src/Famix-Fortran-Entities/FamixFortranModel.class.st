@@ -12,7 +12,7 @@ FamixFortranModel class >> allSubmetamodelsPackagesNames [
 
 { #category : #meta }
 FamixFortranModel class >> annotation [
-	<MSEClass: #FamixFortranModel super: #MooseModel>
+	<FMClass: #FamixFortranModel super: #MooseModel>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 ]

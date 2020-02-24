@@ -9,7 +9,7 @@ Class {
 { #category : #meta }
 FamixFortranComment class >> annotation [
 
-	<MSEClass: #Comment super: #FamixFortranSourcedEntity>
+	<FMClass: #Comment super: #FamixFortranSourcedEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self

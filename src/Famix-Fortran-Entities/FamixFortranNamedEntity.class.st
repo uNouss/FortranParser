@@ -1,15 +1,15 @@
 Class {
 	#name : #FamixFortranNamedEntity,
 	#superclass : #FamixFortranSourcedEntity,
-	#traits : 'FamixTNamed + TDependencyQueries + TEntityMetaLevelDependency',
-	#classTraits : 'FamixTNamed classTrait + TDependencyQueries classTrait + TEntityMetaLevelDependency classTrait',
+	#traits : 'FamixTNamedEntity + TDependencyQueries + TEntityMetaLevelDependency',
+	#classTraits : 'FamixTNamedEntity classTrait + TDependencyQueries classTrait + TEntityMetaLevelDependency classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 
 { #category : #meta }
 FamixFortranNamedEntity class >> annotation [
 
-	<MSEClass: #NamedEntity super: #FamixFortranSourcedEntity>
+	<FMClass: #NamedEntity super: #FamixFortranSourcedEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self

@@ -9,7 +9,7 @@ Class {
 { #category : #meta }
 FamixFortranFile class >> annotation [
 
-	<MSEClass: #File super: #FamixFortranNamedEntity>
+	<FMClass: #File super: #FamixFortranNamedEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self

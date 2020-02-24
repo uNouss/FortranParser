@@ -9,7 +9,7 @@ Class {
 { #category : #meta }
 FamixFortranSourceTextAnchor class >> annotation [
 
-	<MSEClass: #SourceTextAnchor super: #FamixFortranSourceAnchor>
+	<FMClass: #SourceTextAnchor super: #FamixFortranSourceAnchor>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self

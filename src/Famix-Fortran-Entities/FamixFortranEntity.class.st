@@ -7,7 +7,7 @@ Class {
 { #category : #meta }
 FamixFortranEntity class >> annotation [
 
-	<MSEClass: #Entity super: #MooseEntity>
+	<FMClass: #Entity super: #MooseEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self
@@ -36,7 +36,9 @@ FamixFortranEntity >> isAssociation [
 
 { #category : #testing }
 FamixFortranEntity >> isBehaviouralEntity [
-	^false
+
+	<generated>
+	^ false
 ]
 
 { #category : #testing }

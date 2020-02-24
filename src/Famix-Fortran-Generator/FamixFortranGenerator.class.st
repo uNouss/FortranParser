@@ -13,7 +13,8 @@ Class {
 		'compilationUnit',
 		'program',
 		'tImportable',
-		'tWithImports'
+		'tWithImports',
+		'behaviouralEntity'
 	],
 	#category : #'Famix-Fortran-Generator'
 }
@@ -34,6 +35,8 @@ FamixFortranGenerator >> defineClasses [
 
 	super defineClasses.
 
+	behaviouralEntity := builder  newClassNamed: #BehaviouralEntity.
+	
 	compilationUnit := builder  newClassNamed: #CompilationUnit.
 	module := builder  newClassNamed: #Module.
 	program := builder  newClassNamed: #Program.
@@ -60,10 +63,14 @@ FamixFortranGenerator >> defineHierarchy [
 	invocation --|> #TInvocation.
 	invocation --|> #TWithSignature.
 
+	behaviouralEntity --|> namedEntity.
+	behaviouralEntity --|> #TWithStatements.
+	behaviouralEntity --|> #TWithAccesses.
+	behaviouralEntity --|> #TWithInvocations.
+	behaviouralEntity --|> #TNamespace.
+	behaviouralEntity --|> #TWithLocalVariables.
+
 	compilationUnit --|> namedEntity.
-	compilationUnit --|> #TWithFunctions.
-	compilationUnit --|> #TWithTypes.
-	compilationUnit --|> #TGlobalVariableScope.
 	compilationUnit --|> #TNamespace.
 
 	module --|> namedEntity.
@@ -77,34 +84,21 @@ FamixFortranGenerator >> defineHierarchy [
 
 	globalVariable --|> namedEntity.
 	globalVariable --|> #TStructuralEntity.
-	globalVariable --|> #TGlobalVariable.
 	globalVariable --|> #TDefinedInModule.
 	globalVariable --|> #TPossibleStub.
 	globalVariable --|> #TNamespaceEntity.
 
-	program --|> namedEntity.
+	program --|> behaviouralEntity.
 	program --|> #TWithTypes.
-	program --|> #TWithLocalVariables.
-	program --|> #TWithStatements.
-	program --|> #TWithAccesses.
-	program --|> #TWithInvocations.
 	program --|> #TDefinedInModule.
 	program --|> #TWithImports.
-	program --|> #TNamespaceEntity.
 	program --|> #TNamespace.
 
-	function --|> namedEntity.
-	function --|> #TFunction.
-	function --|> #TWithStatements.
-	function --|> #TWithAccesses.
-	function --|> #TWithInvocations.
-	function --|> #TNamespace.
+	function --|> behaviouralEntity.
 	function --|> #TInvocable.
 	function --|> #TPossibleStub.
-	function --|> #TWithLocalVariables.
 	function --|> #TWithParameters.
 	function --|> #TDefinedInModule.
-	function --|> #TNamespaceEntity.
 	function --|> #TWithSignature.
 
 	localVariable --|> namedEntity.
@@ -118,7 +112,6 @@ FamixFortranGenerator >> defineHierarchy [
 	parameter --|> #TNamespaceEntity.
 
 	type --|> namedEntity.
-	type --|> #TType.
 	type --|> #TWithTypeAliases.
 	type --|> #TParameterizedTypeUser.
 	type --|> #TDefinedInModule.
@@ -127,8 +120,19 @@ FamixFortranGenerator >> defineHierarchy [
 ]
 
 { #category : #definition }
+FamixFortranGenerator >> defineProperties [
+	super defineProperties.
+	
+	behaviouralEntity withTesting
+]
+
+{ #category : #definition }
 FamixFortranGenerator >> defineRelations [
 	super defineRelations.
+
+	self apply: #TWithFunctions on: compilationUnit oppositeOn: function.
+	self apply: #TWithTypes on: compilationUnit oppositeOn: type.
+	self apply: #TGlobalVariableScope on: compilationUnit oppositeOn: globalVariable.
 
 	((tWithImports property: #importedEntities)
 			comment: 'The entities that are imported by this one' ;

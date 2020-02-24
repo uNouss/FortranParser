@@ -12,17 +12,10 @@ Class {
 { #category : #meta }
 FamixFortranModule class >> annotation [
 
-	<MSEClass: #Module super: #FamixFortranNamedEntity>
+	<FMClass: #Module super: #FamixFortranNamedEntity>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self
-]
-
-{ #category : #meta }
-FamixFortranModule class >> requirements [
-
-	<generated>
-	^ { FamixFortranCompilationUnit }
 ]
 
 { #category : #accessing }
@@ -40,7 +33,6 @@ FamixFortranModule >> compilationUnit: anObject [
 
 	<generated>
 	compilationUnit := anObject
-
 ]
 
 { #category : #navigation }

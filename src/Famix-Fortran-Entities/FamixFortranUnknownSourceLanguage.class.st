@@ -9,7 +9,7 @@ Class {
 { #category : #meta }
 FamixFortranUnknownSourceLanguage class >> annotation [
 
-	<MSEClass: #UnknownSourceLanguage super: #FamixFortranSourceLanguage>
+	<FMClass: #UnknownSourceLanguage super: #FamixFortranSourceLanguage>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self

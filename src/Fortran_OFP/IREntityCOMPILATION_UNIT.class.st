@@ -6,7 +6,7 @@ Class {
 
 { #category : #accessing }
 IREntityCOMPILATION_UNIT >> famixClass [
-	^FamixFortranCompilationUnit
+	^FamixFortranCompilationUnit 
 ]
 
 { #category : #testing }
