@@ -3,13 +3,13 @@ A test class for testing the behavior of IntermediaryRepresentations classes.
 Offers some simple common functionalities
 "
 Class {
-	#name : #IRImport4Test,
+	#name : #IRImportResolveTest,
 	#superclass : #IRAbstractTest,
 	#category : #'Fortran_OFP-Tests'
 }
 
 { #category : #initialization }
-IRImport4Test >> setUp [
+IRImportResolveTest >> setUp [
 	super setUp.
 	self importIR: '{"key":"keyMdl1","kind":"MODULE","data":{"name":"mdl1"}}'.
 	self importIR: '{"key":"keyMdl2","kind":"MODULE","data":{"name":"mdl2"}}'.
@@ -22,7 +22,7 @@ IRImport4Test >> setUp [
 ]
 
 { #category : #tests }
-IRImport4Test >> testResolveFunctionInModule [
+IRImportResolveTest >> testResolveFunctionInModule [
 	| fct fmx ir |
 	fmx := FamixFortranModule new.
 	ir := 	self makeIR: IREntityMODULE key: 'keyMdl'.
@@ -38,6 +38,6 @@ IRImport4Test >> testResolveFunctionInModule [
 ]
 
 { #category : #tests }
-IRImport4Test >> testResolveFunctionNotFound [
+IRImportResolveTest >> testResolveFunctionNotFound [
 	self assert: (irModel resolveFunction: 'fctUnknown') size equals: 0
 ]

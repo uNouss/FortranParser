@@ -68,7 +68,6 @@ FamixFortranGenerator >> defineHierarchy [
 	behaviouralEntity --|> #TWithAccesses.
 	behaviouralEntity --|> #TWithInvocations.
 	behaviouralEntity --|> #TNamespace.
-	behaviouralEntity --|> #TWithLocalVariables.
 
 	compilationUnit --|> namedEntity.
 	compilationUnit --|> #TNamespace.
@@ -86,7 +85,6 @@ FamixFortranGenerator >> defineHierarchy [
 	globalVariable --|> #TStructuralEntity.
 	globalVariable --|> #TDefinedInModule.
 	globalVariable --|> #TPossibleStub.
-	globalVariable --|> #TNamespaceEntity.
 
 	program --|> behaviouralEntity.
 	program --|> #TWithTypes.
@@ -97,25 +95,19 @@ FamixFortranGenerator >> defineHierarchy [
 	function --|> behaviouralEntity.
 	function --|> #TInvocable.
 	function --|> #TPossibleStub.
-	function --|> #TWithParameters.
 	function --|> #TDefinedInModule.
 	function --|> #TWithSignature.
 
 	localVariable --|> namedEntity.
 	localVariable --|> #TStructuralEntity.
-	localVariable --|> #TLocalVariable.
-	localVariable --|> #TNamespaceEntity.
 
 	parameter --|> namedEntity.
 	parameter --|> #TStructuralEntity.
-	parameter --|> #TParameter.
-	parameter --|> #TNamespaceEntity.
 
 	type --|> namedEntity.
 	type --|> #TWithTypeAliases.
 	type --|> #TParameterizedTypeUser.
 	type --|> #TDefinedInModule.
-	type --|> #TNamespaceEntity.
 
 ]
 
@@ -131,8 +123,11 @@ FamixFortranGenerator >> defineRelations [
 	super defineRelations.
 
 	self apply: #TWithFunctions on: compilationUnit oppositeOn: function.
+	self apply: #TWithFunctions on: module oppositeOn: function.
 	self apply: #TWithTypes on: compilationUnit oppositeOn: type.
 	self apply: #TGlobalVariableScope on: compilationUnit oppositeOn: globalVariable.
+	self apply: #TWithParameters on: function oppositeOn: parameter.
+	self apply: #TWithLocalVariables on: behaviouralEntity oppositeOn: localVariable.
 
 	((tWithImports property: #importedEntities)
 			comment: 'The entities that are imported by this one' ;

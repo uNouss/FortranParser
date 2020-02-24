@@ -2,13 +2,13 @@
 A test class for testing the behavior of IRReader
 "
 Class {
-	#name : #IRImport0Test,
+	#name : #IRImportReadJsonTest,
 	#superclass : #IRAbstractTest,
 	#category : #'Fortran_OFP-Tests'
 }
 
 { #category : #tests }
-IRImport0Test >> testReadFUNCTION [
+IRImportReadJsonTest >> testReadFUNCTION [
 	self importIR: '{"parent":"whatever","kind":"FUNCTION","data":{"name":"entity2"}}'.
 	
 	self assert: irModel entities size equals: 1.
@@ -18,7 +18,7 @@ IRImport0Test >> testReadFUNCTION [
 ]
 
 { #category : #tests }
-IRImport0Test >> testReadNAMEREF [
+IRImportReadJsonTest >> testReadNAMEREF [
 	self importIR: '{"parent":"whatever","kind":"NAMEREF","data":{"name":"entity2"}}'.
 	
 	self assert: irModel entities size equals: 1.
@@ -28,7 +28,7 @@ IRImport0Test >> testReadNAMEREF [
 ]
 
 { #category : #tests }
-IRImport0Test >> testReadVARIABLE [
+IRImportReadJsonTest >> testReadVARIABLE [
 	self importIR: '{"key":"key1","parent":"whatever","kind":"VARIABLE","data":{"anchorstart":123,"isstub":false,"name":"entity2","anchorfile":"aFile.f90","declaredParam":false,"anchorend":456}}'.
 	
 	self assert: irModel entities size equals: 1.
