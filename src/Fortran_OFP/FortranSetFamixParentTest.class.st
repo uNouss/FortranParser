@@ -1,6 +1,6 @@
 Class {
-	#name : #IRImportFamixParentTest,
-	#superclass : #IRAbstractTest,
+	#name : #FortranSetFamixParentTest,
+	#superclass : #FortranAbstractTest,
 	#instVars : [
 		'mdl',
 		'fct'
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #tests }
-IRImportFamixParentTest >> testSetFamixParentFUNCTION [
+FortranSetFamixParentTest >> testSetFamixParentFUNCTION [
 	| ir fmxParent fmxChild |
 	ir := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	fmxChild := FamixFortranFunction new.
@@ -25,7 +25,7 @@ IRImportFamixParentTest >> testSetFamixParentFUNCTION [
 ]
 
 { #category : #tests }
-IRImportFamixParentTest >> testSetFamixParentGLOBALVAR [
+FortranSetFamixParentTest >> testSetFamixParentGLOBALVAR [
 	| ir fmxParent fmxChild |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	fmxChild := FamixFortranGlobalVariable new.
@@ -41,7 +41,7 @@ IRImportFamixParentTest >> testSetFamixParentGLOBALVAR [
 ]
 
 { #category : #tests }
-IRImportFamixParentTest >> testSetFamixParentLOCALVAR [
+FortranSetFamixParentTest >> testSetFamixParentLOCALVAR [
 	| ir fmxParent fmxChild |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	fmxChild := FamixFortranLocalVariable new.

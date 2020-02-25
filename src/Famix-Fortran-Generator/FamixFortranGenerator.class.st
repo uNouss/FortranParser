@@ -73,29 +73,18 @@ FamixFortranGenerator >> defineHierarchy [
 	compilationUnit --|> #TNamespace.
 
 	module --|> namedEntity.
-	module --|> #TModule.
-	module --|> #TImportable.
-	module --|> #TWithImports.
-	module --|> #TWithFunctions.
-	module --|> #TWithTypes.
-	module --|> #TGlobalVariableScope.
 	module --|> #TNamespace.
 
 	globalVariable --|> namedEntity.
 	globalVariable --|> #TStructuralEntity.
-	globalVariable --|> #TDefinedInModule.
 	globalVariable --|> #TPossibleStub.
 
 	program --|> behaviouralEntity.
-	program --|> #TWithTypes.
-	program --|> #TDefinedInModule.
-	program --|> #TWithImports.
 	program --|> #TNamespace.
 
 	function --|> behaviouralEntity.
 	function --|> #TInvocable.
 	function --|> #TPossibleStub.
-	function --|> #TDefinedInModule.
 	function --|> #TWithSignature.
 
 	localVariable --|> namedEntity.
@@ -105,9 +94,6 @@ FamixFortranGenerator >> defineHierarchy [
 	parameter --|> #TStructuralEntity.
 
 	type --|> namedEntity.
-	type --|> #TWithTypeAliases.
-	type --|> #TParameterizedTypeUser.
-	type --|> #TDefinedInModule.
 
 ]
 
@@ -125,9 +111,14 @@ FamixFortranGenerator >> defineRelations [
 	self apply: #TWithFunctions on: compilationUnit oppositeOn: function.
 	self apply: #TWithFunctions on: module oppositeOn: function.
 	self apply: #TWithTypes on: compilationUnit oppositeOn: type.
+	self apply: #TWithTypes on: program oppositeOn: type.
+	self apply: #TWithTypes on: module oppositeOn: type.
 	self apply: #TGlobalVariableScope on: compilationUnit oppositeOn: globalVariable.
+	self apply: #TGlobalVariableScope on: module oppositeOn: globalVariable.
 	self apply: #TWithParameters on: function oppositeOn: parameter.
 	self apply: #TWithLocalVariables on: behaviouralEntity oppositeOn: localVariable.
+	self apply: #TModule on: module oppositeOn: program.
+	self apply: #TModule on: module oppositeOn: function.
 
 	((tWithImports property: #importedEntities)
 			comment: 'The entities that are imported by this one' ;
@@ -137,7 +128,9 @@ FamixFortranGenerator >> defineRelations [
 			comment: 'The entities that import this one' ;
 			target ;
 			derived).
-			
+	self apply: #TWithimports on: module oppositeTrait: #TImportable on: module.
+	self apply: #TWithimports on: program oppositeTrait: #TImportable on: module.
+
 	compilationUnit <>- module.
 ]
 

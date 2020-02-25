@@ -2,8 +2,8 @@
 A test class for testing the behavior of IREntity
 "
 Class {
-	#name : #IRImportSetParentTest,
-	#superclass : #IRAbstractTest,
+	#name : #FortranIRSetParentTest,
+	#superclass : #FortranAbstractTest,
 	#instVars : [
 		'mdl',
 		'fct'
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #tests }
-IRImportSetParentTest >> testSetParentFUNCTION [
+FortranIRSetParentTest >> testSetParentFUNCTION [
 	| parent child |
 	parent := self makeIR: IREntityMODULE key: 'keyMdl'.
 	child := self makeIR: IREntityFUNCTION key: 'keyFct'.
@@ -25,7 +25,7 @@ IRImportSetParentTest >> testSetParentFUNCTION [
 ]
 
 { #category : #tests }
-IRImportSetParentTest >> testSetParentNAMEREF [
+FortranIRSetParentTest >> testSetParentNAMEREF [
 	| parent child |
 	parent := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	child := self makeIR: IREntityNAMEREF key: 'keyRef'.
@@ -38,7 +38,7 @@ IRImportSetParentTest >> testSetParentNAMEREF [
 ]
 
 { #category : #tests }
-IRImportSetParentTest >> testSetParentVARIABLE [
+FortranIRSetParentTest >> testSetParentVARIABLE [
 	| parent child |
 	parent := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	child := self makeIR: IREntityVARIABLE key: 'keyVar'.

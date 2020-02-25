@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranFunction,
 	#superclass : #FamixFortranBehaviouralEntity,
-	#traits : 'FamixFortranTPossibleStub + FamixTDefinedInModule + FamixTFunction + FamixTInvocable + FamixTWithParameters + FamixTWithSignature',
-	#classTraits : 'FamixFortranTPossibleStub classTrait + FamixTDefinedInModule classTrait + FamixTFunction classTrait + FamixTInvocable classTrait + FamixTWithParameters classTrait + FamixTWithSignature classTrait',
+	#traits : 'FamixFortranTPossibleStub + FamixTFunction + FamixTInvocable + FamixTModule + FamixTWithParameters + FamixTWithSignature',
+	#classTraits : 'FamixFortranTPossibleStub classTrait + FamixTFunction classTrait + FamixTInvocable classTrait + FamixTModule classTrait + FamixTWithParameters classTrait + FamixTWithSignature classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 

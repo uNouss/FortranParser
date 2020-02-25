@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranLocalVariable,
 	#superclass : #FamixFortranNamedEntity,
-	#traits : 'FamixFortranTNamespaceEntity + FamixTLocalVariable + FamixTStructuralEntity',
-	#classTraits : 'FamixFortranTNamespaceEntity classTrait + FamixTLocalVariable classTrait + FamixTStructuralEntity classTrait',
+	#traits : 'FamixTLocalVariable + FamixTStructuralEntity',
+	#classTraits : 'FamixTLocalVariable classTrait + FamixTStructuralEntity classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 

@@ -1,5 +1,5 @@
 Class {
-	#name : #IRAbstractTest,
+	#name : #FortranAbstractTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'irModel'
@@ -8,13 +8,13 @@ Class {
 }
 
 { #category : #'private utilities' }
-IRAbstractTest >> importIR: entityDescription [
+FortranAbstractTest >> importIR: entityDescription [
 	irModel readFromStream: (ReadStream on: entityDescription).
 
 ]
 
 { #category : #'private utilities' }
-IRAbstractTest >> makeIR: irEntityClass key: aString [
+FortranAbstractTest >> makeIR: irEntityClass key: aString [
 	 | ir |
 	ir := irEntityClass new.
 	irModel at: aString put: ir.
@@ -22,6 +22,6 @@ IRAbstractTest >> makeIR: irEntityClass key: aString [
 ]
 
 { #category : #initialization }
-IRAbstractTest >> setUp [
+FortranAbstractTest >> setUp [
 	irModel := IRReader new
 ]

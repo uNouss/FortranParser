@@ -1,6 +1,6 @@
 Class {
-	#name : #IRImportToFamixTest,
-	#superclass : #IRAbstractTest,
+	#name : #FortranIRToFamixTest,
+	#superclass : #FortranAbstractTest,
 	#instVars : [
 		'mdl',
 		'fct'
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : #tests }
-IRImportToFamixTest >> testToFamixFUNCTION [
+FortranIRToFamixTest >> testToFamixFUNCTION [
 	| ir fmx |
 	ir := self makeIR: IREntityFUNCTION key: 'keyFct'.
 	ir name: 'fct'.
@@ -20,7 +20,7 @@ IRImportToFamixTest >> testToFamixFUNCTION [
 ]
 
 { #category : #tests }
-IRImportToFamixTest >> testToFamixMODULE [
+FortranIRToFamixTest >> testToFamixMODULE [
 	| ir fmx |
 	ir := self makeIR: IREntityMODULE key: 'keyMdl'.
 	ir name: 'mdl'.
@@ -33,7 +33,7 @@ IRImportToFamixTest >> testToFamixMODULE [
 ]
 
 { #category : #tests }
-IRImportToFamixTest >> testToFamixVARIABLE_localToFunction [
+FortranIRToFamixTest >> testToFamixVARIABLE_localToFunction [
 	| ir fmx |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	ir name: 'var'.
@@ -47,7 +47,7 @@ IRImportToFamixTest >> testToFamixVARIABLE_localToFunction [
 ]
 
 { #category : #tests }
-IRImportToFamixTest >> testToFamixVARIABLE_localToModule [
+FortranIRToFamixTest >> testToFamixVARIABLE_localToModule [
 	| ir fmx |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	ir name: 'var'.
@@ -61,7 +61,7 @@ IRImportToFamixTest >> testToFamixVARIABLE_localToModule [
 ]
 
 { #category : #tests }
-IRImportToFamixTest >> testToFamixVARIABLE_localToNothing [
+FortranIRToFamixTest >> testToFamixVARIABLE_localToNothing [
 	| ir fmx |
 	ir := self makeIR: IREntityVARIABLE key: 'keyVar'.
 	ir name: 'var'.

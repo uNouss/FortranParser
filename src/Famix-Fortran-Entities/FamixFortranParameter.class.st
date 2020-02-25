@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranParameter,
 	#superclass : #FamixFortranNamedEntity,
-	#traits : 'FamixFortranTNamespaceEntity + FamixTParameter + FamixTStructuralEntity',
-	#classTraits : 'FamixFortranTNamespaceEntity classTrait + FamixTParameter classTrait + FamixTStructuralEntity classTrait',
+	#traits : 'FamixTParameter + FamixTStructuralEntity',
+	#classTraits : 'FamixTParameter classTrait + FamixTStructuralEntity classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 

@@ -1,12 +1,12 @@
 Trait {
-	#name : #FamixFortranTNamespaceEntity,
+	#name : #FamixFortranTWithimports,
 	#category : #'Famix-Fortran-Entities-Traits'
 }
 
 { #category : #meta }
-FamixFortranTNamespaceEntity classSide >> annotation [
+FamixFortranTWithimports classSide >> annotation [
 
-	<FMClass: #TNamespaceEntity super: #Object>
+	<FMClass: #TWithimports super: #Object>
 	<package: #'Famix-Fortran-Entities'>
 	<generated>
 	^self

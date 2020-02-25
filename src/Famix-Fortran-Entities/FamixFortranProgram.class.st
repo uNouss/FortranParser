@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranProgram,
 	#superclass : #FamixFortranBehaviouralEntity,
-	#traits : 'FamixFortranTWithImports + FamixTDefinedInModule + FamixTNamespace + FamixTWithTypes',
-	#classTraits : 'FamixFortranTWithImports classTrait + FamixTDefinedInModule classTrait + FamixTNamespace classTrait + FamixTWithTypes classTrait',
+	#traits : 'FamixFortranTWithimports + FamixTModule + FamixTNamespace + FamixTWithTypes',
+	#classTraits : 'FamixFortranTWithimports classTrait + FamixTModule classTrait + FamixTNamespace classTrait + FamixTWithTypes classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 
