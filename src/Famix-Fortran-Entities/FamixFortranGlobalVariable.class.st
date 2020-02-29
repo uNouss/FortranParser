@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranGlobalVariable,
 	#superclass : #FamixFortranNamedEntity,
-	#traits : 'FamixFortranTPossibleStub + FamixTGlobalVariable + FamixTStructuralEntity',
-	#classTraits : 'FamixFortranTPossibleStub classTrait + FamixTGlobalVariable classTrait + FamixTStructuralEntity classTrait',
+	#traits : 'FamixTGlobalVariable + FamixTStructuralEntity',
+	#classTraits : 'FamixTGlobalVariable classTrait + FamixTStructuralEntity classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 

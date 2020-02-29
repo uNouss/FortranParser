@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranSourceTextAnchor,
 	#superclass : #FamixFortranSourceAnchor,
-	#traits : 'FamixTWithImmediateSource',
-	#classTraits : 'FamixTWithImmediateSource classTrait',
+	#traits : 'FamixTHasImmediateSource',
+	#classTraits : 'FamixTHasImmediateSource classTrait',
 	#category : #'Famix-Fortran-Entities-Entities'
 }
 

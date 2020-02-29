@@ -56,12 +56,10 @@ FamixFortranGenerator >> defineHierarchy [
 
 	super defineHierarchy.
 
-	access --|> association.
 	access --|> #TAccess.
 
-	invocation --|> association.
 	invocation --|> #TInvocation.
-	invocation --|> #TWithSignature.
+	invocation --|> #THasSignature.
 
 	behaviouralEntity --|> namedEntity.
 	behaviouralEntity --|> #TWithStatements.
@@ -77,15 +75,13 @@ FamixFortranGenerator >> defineHierarchy [
 
 	globalVariable --|> namedEntity.
 	globalVariable --|> #TStructuralEntity.
-	globalVariable --|> #TPossibleStub.
 
 	program --|> behaviouralEntity.
 	program --|> #TNamespace.
 
 	function --|> behaviouralEntity.
 	function --|> #TInvocable.
-	function --|> #TPossibleStub.
-	function --|> #TWithSignature.
+	function --|> #THasSignature.
 
 	localVariable --|> namedEntity.
 	localVariable --|> #TStructuralEntity.
@@ -113,8 +109,8 @@ FamixFortranGenerator >> defineRelations [
 	self apply: #TWithTypes on: compilationUnit oppositeOn: type.
 	self apply: #TWithTypes on: program oppositeOn: type.
 	self apply: #TWithTypes on: module oppositeOn: type.
-	self apply: #TGlobalVariableScope on: compilationUnit oppositeOn: globalVariable.
-	self apply: #TGlobalVariableScope on: module oppositeOn: globalVariable.
+	self apply: #TWithGlobalVariables on: compilationUnit oppositeOn: globalVariable.
+	self apply: #TWithGlobalVariables on: module oppositeOn: globalVariable.
 	self apply: #TWithParameters on: function oppositeOn: parameter.
 	self apply: #TWithLocalVariables on: behaviouralEntity oppositeOn: localVariable.
 	self apply: #TModule on: module oppositeOn: program.
@@ -128,8 +124,8 @@ FamixFortranGenerator >> defineRelations [
 			comment: 'The entities that import this one' ;
 			target ;
 			derived).
-	self apply: #TWithimports on: module oppositeTrait: #TImportable on: module.
-	self apply: #TWithimports on: program oppositeTrait: #TImportable on: module.
+	self apply: #TWithImports on: module oppositeTrait: #TImportable on: module.
+	self apply: #TWithImports on: program oppositeTrait: #TImportable on: module.
 
 	compilationUnit <>- module.
 ]

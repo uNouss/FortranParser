@@ -1,8 +1,8 @@
 Class {
 	#name : #FamixFortranCompilationUnit,
 	#superclass : #FamixFortranNamedEntity,
-	#traits : 'FamixTGlobalVariableScope + FamixTNamespace + FamixTWithFunctions + FamixTWithTypes',
-	#classTraits : 'FamixTGlobalVariableScope classTrait + FamixTNamespace classTrait + FamixTWithFunctions classTrait + FamixTWithTypes classTrait',
+	#traits : 'FamixTNamespace + FamixTWithFunctions + FamixTWithGlobalVariables + FamixTWithTypes',
+	#classTraits : 'FamixTNamespace classTrait + FamixTWithFunctions classTrait + FamixTWithGlobalVariables classTrait + FamixTWithTypes classTrait',
 	#instVars : [
 		'#module => FMOne type: #FamixFortranModule opposite: #compilationUnit'
 	],
