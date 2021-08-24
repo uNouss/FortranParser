@@ -12,6 +12,8 @@ BaselineOfFortranParser >> baseline: spec [
 
 		package: 'FortranParser'  with: [ spec requires: #('Famix-Fortran-Entities' 'NeoJSON') ] ;
 		package: 'FortranParser-Tests' with: [ spec requires: #('FortranParser') ] ;
+		package: 'Famix-Fortran-Entities' ;
+		package: 'Famix-Fortran-Generator' ;
 
 		group: 'default' with: #(core) ;
 		group: 'core' with: #('FortranParser') ;
