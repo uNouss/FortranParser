@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'irModel'
 	],
-	#category : #'Fortran_OFP-Tests'
+	#category : #'FortranParser-Tests'
 }
 
 { #category : #'private utilities' }

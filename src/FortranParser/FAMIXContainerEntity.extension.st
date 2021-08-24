@@ -1,18 +1,18 @@
 Extension { #name : #FAMIXContainerEntity }
 
-{ #category : #'*Fortran_OFP' }
+{ #category : #'*FortranParser' }
 FAMIXContainerEntity >> addUse: aModule [
 	self usedModules value add: aModule
 		
 ]
 
-{ #category : #'*Fortran_OFP' }
+{ #category : #'*FortranParser' }
 FAMIXContainerEntity >> addUsing: aModule [
 	self usingModules value add: aModule
 		
 ]
 
-{ #category : #'*Fortran_OFP' }
+{ #category : #'*FortranParser' }
 FAMIXContainerEntity >> usedModules [
 	^ self privateState 		
 		attributeAt: #usedModules
@@ -23,13 +23,13 @@ FAMIXContainerEntity >> usedModules [
 			 )
 ]
 
-{ #category : #'*Fortran_OFP' }
+{ #category : #'*FortranParser' }
 FAMIXContainerEntity >> usedModules: aCollection [
 	^ self usedModules value: aCollection
 
 ]
 
-{ #category : #'*Fortran_OFP' }
+{ #category : #'*FortranParser' }
 FAMIXContainerEntity >> usingModules [
 	^ self privateState 		
 		attributeAt: #usingModules
@@ -40,7 +40,7 @@ FAMIXContainerEntity >> usingModules [
 			 )
 ]
 
-{ #category : #'*Fortran_OFP' }
+{ #category : #'*FortranParser' }
 FAMIXContainerEntity >> usingModules: aCollection [
 	^ self usingModules value: aCollection
 

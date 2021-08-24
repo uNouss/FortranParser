@@ -1,7 +1,7 @@
 Class {
 	#name : #IREntityVARREF,
 	#superclass : #IREntityNAMEREF,
-	#category : #'Fortran_OFP-IRModel'
+	#category : #'FortranParser-IRModel'
 }
 
 { #category : #testing }

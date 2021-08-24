@@ -4,7 +4,7 @@ A test class for testing the behavior of IRReader
 Class {
 	#name : #FortranImportJsonToIRTest,
 	#superclass : #FortranAbstractTest,
-	#category : #'Fortran_OFP-Tests'
+	#category : #'FortranParser-Tests'
 }
 
 { #category : #tests }

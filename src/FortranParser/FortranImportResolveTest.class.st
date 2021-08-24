@@ -5,7 +5,7 @@ Offers some simple common functionalities
 Class {
 	#name : #FortranImportResolveTest,
 	#superclass : #FortranAbstractTest,
-	#category : #'Fortran_OFP-Tests'
+	#category : #'FortranParser-Tests'
 }
 
 { #category : #initialization }

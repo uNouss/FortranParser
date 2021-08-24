@@ -8,7 +8,7 @@ Class {
 		'mdl',
 		'fct'
 	],
-	#category : #'Fortran_OFP-Tests'
+	#category : #'FortranParser-Tests'
 }
 
 { #category : #tests }

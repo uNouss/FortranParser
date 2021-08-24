@@ -1,7 +1,7 @@
 Class {
 	#name : #'IREntityCOMPILATION_UNIT',
 	#superclass : #IREntityNamed,
-	#category : #'Fortran_OFP-IRModel'
+	#category : #'FortranParser-IRModel'
 }
 
 { #category : #accessing }

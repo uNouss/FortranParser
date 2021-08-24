@@ -1,6 +1,6 @@
 Extension { #name : #FileReference }
 
-{ #category : #'*Fortran_OFP' }
+{ #category : #'*FortranParser' }
 FileReference >> gtInspectorActionImportFortranIR [
 	<gtInspectorAction>
 	^ GLMGenericAction new
