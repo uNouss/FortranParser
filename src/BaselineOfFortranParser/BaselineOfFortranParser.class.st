@@ -9,9 +9,9 @@ BaselineOfFortranParser >> baseline: spec [
 	<baseline>
 	spec for: #common do: [ spec
 		baseline: 'NeoJSON' with: [ spec repository: 'github://svenvc/NeoJSON' ] ;
-		baseline: 'XMLReader' with: [ spec repository: 'github://pharo-contributions/XML-XMLParser/src' ] ;
+		baseline: 'XMLParser' with: [ spec repository: 'github://pharo-contributions/XML-XMLParser/src' ] ;
 
-		package: 'FortranParser'  with: [ spec requires: #('Famix-Fortran-Entities' 'NeoJSON' 'XMLReader') ] ;
+		package: 'FortranParser'  with: [ spec requires: #('Famix-Fortran-Entities' 'NeoJSON' 'XMLParser') ] ;
 		package: 'FortranParser-Tests' with: [ spec requires: #('FortranParser') ] ;
 		package: 'Famix-Fortran-Entities' ;
 		package: 'Famix-Fortran-Generator' ;
