@@ -7,7 +7,8 @@ Class {
 		'kind',
 		'data',
 		'parentKey',
-		'parentIR'
+		'parentIR',
+		'children'
 	],
 	#category : #'FortranParser-IRModel'
 }
@@ -20,6 +21,11 @@ IREntity class >> from: json [
 			yourself
 ]
 
+{ #category : #adding }
+IREntity >> addChild: anIREntity [
+	children add: anIREntity
+]
+
 { #category : #accessing }
 IREntity >> data [
 	^data
@@ -27,8 +33,6 @@ IREntity >> data [
 
 { #category : #'accessing - private tests' }
 IREntity >> data: aDictionnary [
-	CurrentExecutionEnvironment value isTest
-		ifFalse: [ self shouldNotImplement  ].
 	data := aDictionnary 
 ]
 
@@ -54,6 +58,12 @@ IREntity >> fromJSON: json [
 	data := json at: 'data'.
 	parentKey := json at: 'parent' ifAbsent: nil.
 
+]
+
+{ #category : #initialization }
+IREntity >> initialize [ 
+	super initialize.
+	children := OrderedCollection new
 ]
 
 { #category : #testing }
@@ -102,8 +112,6 @@ IREntity >> parentIR [
 
 { #category : #'accessing - private tests' }
 IREntity >> parentIR: ir [
-	CurrentExecutionEnvironment value isTest
-		ifFalse: [ self shouldNotImplement  ].
 	parentIR := ir
 ]
 

@@ -1,7 +1,7 @@
 Class {
 	#name : #XMLEntityAssociation,
 	#superclass : #XMLEntity,
-	#category : #'FortranParser-IRModel'
+	#category : #'FortranParser-XMLNodes'
 }
 
 { #category : #accessing }

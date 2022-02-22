@@ -1,4 +1,7 @@
 "
+**TO BE REMOVED** replaced by XMLReader
+
+
 I am responsible for reading a data file as exported by the OFP parser (https://github.com/NicolasAnquetil/VerveineF.git) and to create a dictionary of IREntities from it
 [[[
 	reader := IRReader readFromFile: 'output.ir'.

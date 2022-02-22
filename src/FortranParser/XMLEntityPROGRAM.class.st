@@ -1,5 +1,10 @@
 Class {
 	#name : #XMLEntityPROGRAM,
 	#superclass : #XMLNamedEntity,
-	#category : #'FortranParser-IRModel'
+	#category : #'FortranParser-XMLNodes'
 }
+
+{ #category : #visiting }
+XMLEntityPROGRAM >> acceptNodeVisitor: aVisitor [
+	^aVisitor visitProgramNode: self
+]

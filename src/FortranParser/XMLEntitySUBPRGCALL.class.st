@@ -1,5 +1,10 @@
 Class {
 	#name : #XMLEntitySUBPRGCALL,
 	#superclass : #XMLEntityAssociation,
-	#category : #'FortranParser-IRModel'
+	#category : #'FortranParser-XMLNodes'
 }
+
+{ #category : #visiting }
+XMLEntitySUBPRGCALL >> acceptNodeVisitor: aVisitor [
+	^aVisitor visitSubprogramCallNode: self
+]
