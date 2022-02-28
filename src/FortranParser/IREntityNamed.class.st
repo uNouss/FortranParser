@@ -23,16 +23,6 @@ IREntityNamed >> name: aString [
 	data at: 'name' put: aString
 ]
 
-{ #category : #printing }
-IREntityNamed >> printOn: aStream [
-	super printOn: aStream.
-	aStream
-		nextPut: $( ;
-		nextPutAll: (self name ifNil: ['']) ;
-		nextPut: $).
-
-]
-
 { #category : #resolving }
 IREntityNamed >> resolveLocalReference: aString [
 	self subclassResponsibility 

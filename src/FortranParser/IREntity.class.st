@@ -63,7 +63,8 @@ IREntity >> fromJSON: json [
 { #category : #initialization }
 IREntity >> initialize [ 
 	super initialize.
-	children := OrderedCollection new
+	children := OrderedCollection new.
+	data := Dictionary new.
 ]
 
 { #category : #testing }

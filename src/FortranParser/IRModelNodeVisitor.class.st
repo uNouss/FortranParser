@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'current'
 	],
-	#category : #'FortranParser-Import'
+	#category : #'FortranParser-Visitor'
 }
 
 { #category : #accessing }
@@ -24,14 +24,16 @@ IRModelNodeVisitor >> newEntity: irClass data: anObject [
 	| entity |
 	entity := irClass new
 		parentIR: current ;
-		data: anObject.
+		data: (Dictionary newFrom: {#name->anObject}).
 	current ifNotNil: [ current addChild: entity].
+	self flag: #fixme. "'Hydratation' de la class IR avec les elements de l'entité"
+"	entity toFamix."
 	^entity
 ]
 
 { #category : #'instance creation' }
 IRModelNodeVisitor >> stack: anIREntity [
-	^IRModelNodeVisitor new
+	^self class new
 		current: anIREntity
 ]
 
@@ -48,13 +50,18 @@ IRModelNodeVisitor >> visitCompilationUnitNode: aNode [
 	
 	entity := self newEntity: IREntityCOMPILATION_UNIT data: (aNode attributeAt: #path).
 	visitor := self stack: entity.
-	^aNode nodes second acceptNodeVisitor: visitor
+	^aNode nodesDo: [ :node | node acceptNodeVisitor: visitor ]
 ]
 
 { #category : #visiting }
 IRModelNodeVisitor >> visitDocument: aNode [
 	aNode nodes first acceptNodeVisitor: self.
 	^current
+]
+
+{ #category : #visiting }
+IRModelNodeVisitor >> visitFunctionNode: aNode [
+	self visitNodeWithHeaderAndBody: aNode on: IREntityFUNCTION
 ]
 
 { #category : #visiting }
@@ -65,17 +72,27 @@ IRModelNodeVisitor >> visitModelNode: aNode [
 
 { #category : #visiting }
 IRModelNodeVisitor >> visitModuleNode: aNode [ 
-	| visitor entity |
-	entity := self newEntity: IREntityMODULE data: (aNode attributeAt: #name).
-	visitor := self stack: entity.
-	(aNode elementAt: #body) acceptNodeVisitor: visitor.
-	(aNode elementAt: #members) acceptNodeVisitor: visitor.
-
+	self visitNodeWithHeaderAndBody: aNode on:  IREntityMODULE
 ]
 
 { #category : #visiting }
 IRModelNodeVisitor >> visitNameRefNode: aNode [
 	^self visitNodeWithElements: aNode
+]
+
+{ #category : #'private-visiting' }
+IRModelNodeVisitor >> visitNodeWithHeaderAndBody: aNode on: irClass [
+	| visitor entity |
+
+	entity := self newEntity: irClass data: (aNode attributeAt: #name).
+	visitor := self stack: entity.
+	(aNode elementAt: #header) acceptNodeVisitor: visitor.
+	(aNode elementAt: #body) acceptNodeVisitor: visitor.
+]
+
+{ #category : #visiting }
+IRModelNodeVisitor >> visitProgramNode: aNode [
+	self visitNodeWithHeaderAndBody: aNode on: IREntityPROGRAM
 ]
 
 { #category : #visiting }
@@ -85,17 +102,14 @@ IRModelNodeVisitor >> visitSubprogramCallNode: aNode [
 
 { #category : #visiting }
 IRModelNodeVisitor >> visitSubprogramNode: aNode [
-	| visitor entity |
-	entity := self newEntity: IREntitySUBPROGRAM data: (aNode attributeAt: #name).
-	visitor := self stack: entity.
-	(aNode elementAt: #header) acceptNodeVisitor: visitor.
-	(aNode elementAt: #body) acceptNodeVisitor: visitor.
+
+	self visitNodeWithHeaderAndBody: aNode on: IREntitySUBPROGRAM
 
 ]
 
 { #category : #visiting }
 IRModelNodeVisitor >> visitUseModuleNode: aNode [
-	self newEntity: IREntityUSEMODULE data: (aNode attributeAt: #path)
+	self newEntity: IREntityUSEMODULE data: (aNode attributeAt: #name)
 ]
 
 { #category : #visiting }
@@ -105,5 +119,12 @@ IRModelNodeVisitor >> visitVarRefNode: aNode [
 
 { #category : #visiting }
 IRModelNodeVisitor >> visitVariableNode: aNode [
-	^self visitNodeWithElements: aNode
+	| entity visitor |
+	
+	"	^self visitNodeWithElements: aNode"
+	
+	self flag: #fixme. "obtenir les variables d'un module"
+	entity := self newEntity: IREntityVARIABLE data: (aNode attributeAt: #name).
+	visitor := self stack: entity.
+	^ aNode nodesDo: [ :node | node acceptNodeVisitor: visitor ]
 ]

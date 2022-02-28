@@ -77,6 +77,7 @@ IREntityAssociation >> targetName [
 { #category : #converting }
 IREntityAssociation >> toFamix [
 	| src tgts |
+
 	src := parentIR famix.
 	src ifNil: [ ^ self ].
 

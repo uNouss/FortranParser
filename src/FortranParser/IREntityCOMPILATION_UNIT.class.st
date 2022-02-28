@@ -40,3 +40,8 @@ IREntityCOMPILATION_UNIT >> resolveLocalVariable: aString [
 IREntityCOMPILATION_UNIT >> setFamixParent [
 	famix mooseModel: parentIR famix
 ]
+
+{ #category : #accessing }
+IREntityCOMPILATION_UNIT >> targetName [
+	^ data at: 'name'.
+]
